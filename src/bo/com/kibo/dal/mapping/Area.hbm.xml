@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <joined-subclass name="bo.com.kibo.entidades.Area" table="t01_area" extends="bo.com.kibo.entidades.GeoLugar">
+        <property name="codigo" type="string">
+            <column name="area_codigo" length="15" not-null="true" unique="true" />
+        </property>
+        <property name="anioInicial" type="java.lang.Short">
+            <column name="area_anio_inicial" />
+        </property>
+        <property name="anioFinal" type="java.lang.Short">
+            <column name="area_anio_final" />
+        </property>
+        <property name="zonaUTM" type="java.lang.Byte">
+            <column name="area_zona_utm" />
+        </property>
+        <property name="bandaUTM" type="string">
+            <column name="area_banda_utm" length="1" />
+        </property>
+    </joined-subclass>
+</hibernate-mapping>

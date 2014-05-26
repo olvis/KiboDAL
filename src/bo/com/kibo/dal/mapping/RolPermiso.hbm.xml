@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="bo.com.kibo.entidades.RolPermiso" table="rol_permsio">
+        <composite-id name="id" class="bo.com.kibo.entidades.RolPermiso$Id">
+            <key-property name="idPermiso" type="int">
+                <column name="perm_id" />
+            </key-property>
+            <key-property name="idRol" type="int">
+                <column name="rol_id" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="rol" class="bo.com.kibo.entidades.Rol" update="false" insert="false" fetch="select">
+            <column name="rol_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="permiso" class="bo.com.kibo.entidades.Permiso" update="false" insert="false" fetch="select">
+            <column name="perm_id" not-null="true" />
+        </many-to-one>
+        <property name="valor" type="boolean">
+            <column name="valor" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="bo.com.kibo.entidades.Calidad" table="t02_calidad">
+        <id name="id" type="java.lang.Integer">
+            <column name="calidad_id" />
+            <generator class="identity" />
+        </id>
+        <property name="codigo" type="string">
+            <column name="calidad_codigo" length="5" not-null="true" unique="true" />
+        </property>
+        <property name="descripcion" type="string">
+            <column name="calidad_descripcion" length="50" />
+        </property>
+        <property name="modificado" type="timestamp" update="false" insert="false">
+            <column name="modificado" length="19" />
+        </property>
+    </class>
+</hibernate-mapping>

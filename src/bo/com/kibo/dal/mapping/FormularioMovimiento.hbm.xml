@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <joined-subclass name="bo.com.kibo.entidades.FormularioMovimiento" table="t104_mov_cab" extends="bo.com.kibo.entidades.EncabezadoFormulario">
+        <many-to-one class="bo.com.kibo.entidades.Area" fetch="select" name="area">
+            <column name="mov_area"/>
+        </many-to-one>
+        <many-to-one class="bo.com.kibo.entidades.Destino" fetch="select" name="destino">
+            <column name="mov_dest"/>
+        </many-to-one>
+        <property name="despacho" type="java.lang.Boolean">
+            <column name="mov_despacho"/>
+        </property>
+        <property name="horas" type="java.lang.Byte">
+            <column name="mov_horas"/>
+        </property>
+        <list name="detalle" table="t104_mov_det">
+            <key column="mov_cab_id" />
+            <list-index column="mov_pos" />
+            <composite-element class="bo.com.kibo.entidades.DetalleMovimiento">
+                <many-to-one class="bo.com.kibo.entidades.Troza" fetch="select" name="troza">
+                    <column name="mov_num"/>
+                </many-to-one>
+                <many-to-one class="bo.com.kibo.entidades.Calidad" fetch="select" name="calidad">
+                    <column name="mov_cal"/>
+                </many-to-one>
+                <many-to-one class="bo.com.kibo.entidades.Carga" fetch="select" name="carga">
+                    <column name="mov_crg"/>
+                </many-to-one>
+                <many-to-one class="bo.com.kibo.entidades.Patio" fetch="select" name="patio">
+                    <column name="mov_pat"/>
+                </many-to-one>
+                <many-to-one class="bo.com.kibo.entidades.Especie" fetch="select" name="especie">
+                    <column name="mov_esp"/>
+                </many-to-one>
+                <property name="dmayor" type="java.lang.Float">
+                    <column name="mov_dma" precision="12" scale="0"/>
+                </property>
+                <property name="dmenor" type="java.lang.Float">
+                    <column name="mov_dme" precision="12" scale="0"/>
+                </property>
+                <property name="largo" type="java.lang.Float">
+                    <column name="mov_larg" precision="12" scale="0"/>
+                </property>
+                <property name="observaciones" type="string">
+                    <column name="mov_obs"/>
+                </property>
+            </composite-element>
+        </list>
+    </joined-subclass>
+</hibernate-mapping>

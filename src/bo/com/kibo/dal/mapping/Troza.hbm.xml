@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="bo.com.kibo.entidades.Troza" table="troza">
+        <id name="numero" type="java.lang.Integer">
+            <column name="troza_num" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="padre" class="bo.com.kibo.entidades.Troza" fetch="select">
+            <column name="troza_padre" />
+        </many-to-one>
+        <many-to-one name="especie" class="bo.com.kibo.entidades.Especie" fetch="select">
+            <column name="troza_esp" not-null="true" />
+        </many-to-one>
+        <many-to-one name="calidad" class="bo.com.kibo.entidades.Calidad" fetch="select">
+            <column name="troza_cal" />
+        </many-to-one>
+        <many-to-one name="area" class="bo.com.kibo.entidades.Area" fetch="select">
+            <column name="troza_area" not-null="true" />
+        </many-to-one>
+        <property name="codigo" type="string">
+            <column name="troza_cod" length="50" not-null="true" />
+        </property>
+        <property name="dMayor" type="java.lang.Float">
+            <column name="troza_dma" precision="12" scale="0" />
+        </property>
+        <property name="dMenor" type="java.lang.Float">
+            <column name="troza_dme" precision="12" scale="0" />
+        </property>
+        <property name="largo" type="java.lang.Float">
+            <column name="troza_largo" precision="12" scale="0" />
+        </property>
+        <property name="estado" type="java.lang.Byte">
+            <column name="troza_estado" />
+        </property>
+        <property name="existe" type="java.lang.Byte">
+            <column name="troza_existe" />
+        </property>
+        <property name="x" type="java.lang.Float">
+            <column name="troza_x" precision="12" scale="0" />
+        </property>
+        <property name="y" type="java.lang.Float">
+            <column name="troza_y" precision="12" scale="0" />
+        </property>
+        <many-to-one name="formularioCenso" class="bo.com.kibo.entidades.FormularioCenso" fetch="select">
+            <column name="cen_cab_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="formularioCorta" class="bo.com.kibo.entidades.FormularioCorta" fetch="select">
+            <column name="cor_cab_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="formularioExtraccion" class="bo.com.kibo.entidades.FormularioExtraccion" fetch="select">
+            <column name="ext_cab_id" not-null="true" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

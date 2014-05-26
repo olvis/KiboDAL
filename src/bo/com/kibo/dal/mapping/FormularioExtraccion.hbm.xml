@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <joined-subclass name="bo.com.kibo.entidades.FormularioExtraccion" table="t103_ext_cab" extends="bo.com.kibo.entidades.EncabezadoFormulario">
+        <many-to-one class="bo.com.kibo.entidades.Area" fetch="select" name="area">
+            <column name="ext_area"/>
+        </many-to-one>
+        <property name="horas" type="java.lang.Byte">
+            <column name="ext_horas"/>
+        </property>
+        <list name="detalle" table="t103_ext_det">
+            <key column="ext_cab_id" />
+            <list-index column="ext_pos" />
+            <composite-element class="bo.com.kibo.entidades.DetalleExtraccion">
+                <many-to-one class="bo.com.kibo.entidades.Troza" fetch="select" name="troza">
+                    <column name="ext_num"/>
+                </many-to-one>
+                <many-to-one class="bo.com.kibo.entidades.Especie" fetch="select" name="especie">
+                    <column name="ext_esp"/>
+                </many-to-one>
+                <many-to-one class="bo.com.kibo.entidades.Carga" fetch="select" name="carga">
+                    <column name="ext_crg"/>
+                </many-to-one>
+                <many-to-one class="bo.com.kibo.entidades.Patio" fetch="select" name="patio">
+                    <column name="ext_pat"/>
+                </many-to-one>
+                <many-to-one class="bo.com.kibo.entidades.Calidad" fetch="select" name="calidad">
+                    <column name="ext_cal"/>
+                </many-to-one>
+                <property name="dmayor" type="java.lang.Float">
+                    <column name="ext_dma" precision="12" scale="0"/>
+                </property>
+                <property name="dmenor" type="java.lang.Float">
+                    <column name="ext_dme" precision="12" scale="0"/>
+                </property>
+                <property name="largo" type="java.lang.Float">
+                    <column name="ext_larg" precision="12" scale="0"/>
+                </property>
+                <property name="observaciones" type="string">
+                    <column name="ext_obs"/>
+                </property>
+            </composite-element>
+        </list>
+    </joined-subclass>
+</hibernate-mapping>

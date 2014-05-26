@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="bo.com.kibo.entidades.EncabezadoFormulario" table="t100_form_cab">
+        <id name="id" type="java.lang.Integer">
+            <column name="form_id" />
+            <generator class="identity" />
+        </id>
+        <property name="tipo" type="byte">
+            <column name="form_tipo" not-null="true" />
+        </property>
+        <property name="fecha" type="date">
+            <column name="form_fecha" length="10" />
+        </property>
+    </class>
+</hibernate-mapping>

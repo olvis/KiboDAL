@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <joined-subclass name="bo.com.kibo.entidades.FormularioCorta" table="t102_cor_cab" extends="bo.com.kibo.entidades.EncabezadoFormulario">
+        <many-to-one class="bo.com.kibo.entidades.Area" fetch="select" name="area">
+            <column name="cor_area"/>
+        </many-to-one>
+        <property name="horas" type="java.lang.Byte">
+            <column name="cor_horas"/>
+        </property>
+        <list name="detalle" table="t102_cor_det">
+            <key column="cor_cab_id" />
+            <list-index column="cor_pos" />
+            <composite-element class="bo.com.kibo.entidades.DetalleCorta">
+                <many-to-one class="bo.com.kibo.entidades.Calidad" fetch="select" name="calidad">
+                    <column name="cor_cal" not-null="true"/>
+                </many-to-one>
+                <many-to-one class="bo.com.kibo.entidades.Carga" fetch="select" name="carga">
+                    <column name="cor_crg"/>
+                </many-to-one>
+                <many-to-one class="bo.com.kibo.entidades.Troza" fetch="select" name="troza">
+                    <column name="cor_num" not-null="true"/>
+                </many-to-one>
+                <many-to-one class="bo.com.kibo.entidades.Especie" fetch="select" name="especie">
+                    <column name="cor_sp"/>
+                </many-to-one>
+                <property name="dmayor" type="java.lang.Float">
+                    <column name="cor_dma" precision="12" scale="0"/>
+                </property>
+                <property name="dmenor" type="java.lang.Float">
+                    <column name="cor_dme" precision="12" scale="0"/>
+                </property>
+                <property name="largo" type="java.lang.Float">
+                    <column name="cor_larg" precision="12" scale="0"/>
+                </property>
+                <property name="observaciones" type="string">
+                    <column name="cor_obs"/>
+                </property>
+            </composite-element>
+        </list>
+    </joined-subclass>
+</hibernate-mapping>

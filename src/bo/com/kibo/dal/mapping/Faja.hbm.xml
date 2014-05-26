@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <joined-subclass name="bo.com.kibo.entidades.Faja" table="t04_faja" extends="bo.com.kibo.entidades.GeoLugar">
+        <property name="numero" type="int">
+            <column name="faja_numero" not-null="true" />
+        </property>
+        <property name="bloque" type="string">
+            <column name="faja_bloque" length="20" not-null="true" />
+        </property>
+        <many-to-one name="area" class="bo.com.kibo.entidades.Area" fetch="select">
+            <column name="area_id" not-null="true" />
+        </many-to-one>
+    </joined-subclass>
+</hibernate-mapping>
