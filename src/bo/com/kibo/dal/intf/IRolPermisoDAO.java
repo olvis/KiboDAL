@@ -6,16 +6,13 @@
 
 package bo.com.kibo.dal.intf;
 
-import bo.com.kibo.entidades.Area;
+import bo.com.kibo.entidades.RolPermiso;
+import bo.com.kibo.entidades.RolPermisoId;
 
 /**
  *
  * @author Olvinho
  */
-public interface IAreaDAO extends IGenericDAO<Area, Integer>{
-    
-    Integer getIdPorCodigo(String codigo);
-    
-    boolean checkId(Integer id);
+public interface IRolPermisoDAO extends IGenericDAO<RolPermiso, RolPermisoId>{
     
 }

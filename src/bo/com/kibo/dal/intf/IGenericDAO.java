@@ -17,6 +17,7 @@ import java.util.List;
  */
 public interface IGenericDAO<T, ID extends Serializable> {
     T obtenerPorId(ID id);
+    T recuperarPorId(ID id);
     List<T> obtenerTodos();
     List<T> findByExample(T exampleInstance, String... excludeProperty);
     T persistir(T entity);

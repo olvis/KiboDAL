@@ -55,6 +55,14 @@ public abstract class GenericHibernateDAO<T, ID extends Serializable> implements
     }
 
     @Override
+    public T recuperarPorId(ID id) {
+        T entity;
+        entity = (T) getSession().get(getPersistentClass(), id);
+        return entity;
+    }
+
+
+    @Override
     public List<T> obtenerTodos() {
         return findByCriteria();
     }

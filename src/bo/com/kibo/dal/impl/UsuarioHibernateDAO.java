@@ -4,18 +4,15 @@
  * and open the template in the editor.
  */
 
-package bo.com.kibo.dal.intf;
+package bo.com.kibo.dal.impl;
 
-import bo.com.kibo.entidades.Area;
+import bo.com.kibo.dal.intf.IUsuarioDAO;
+import bo.com.kibo.entidades.Usuario;
 
 /**
  *
  * @author Olvinho
  */
-public interface IAreaDAO extends IGenericDAO<Area, Integer>{
-    
-    Integer getIdPorCodigo(String codigo);
-    
-    boolean checkId(Integer id);
+public class UsuarioHibernateDAO extends GenericHibernateDAO<Usuario, Integer> implements IUsuarioDAO{
     
 }

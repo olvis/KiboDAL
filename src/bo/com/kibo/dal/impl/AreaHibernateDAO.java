@@ -8,11 +8,28 @@ package bo.com.kibo.dal.impl;
 
 import bo.com.kibo.dal.intf.IAreaDAO;
 import bo.com.kibo.entidades.Area;
+import org.hibernate.Query;
 
 /**
  *
  * @author Olvinho
  */
 public class AreaHibernateDAO extends GenericHibernateDAO<Area, Integer> implements IAreaDAO{
+
+    @Override
+    public Integer getIdPorCodigo(String codigo) {
+        Query query = getSession().createQuery("SELECT id fom Area a WHERE a.codigo = :codigo");
+        query.setParameter("codigo", codigo);
+        return (Integer)query.uniqueResult();
+    }
+
+    @Override
+    public boolean checkId(Integer id) {
+        Query query = getSession().createQuery("SELECT 1 fom Area a WHERE a.id = :id");
+        query.setParameter("id", id);
+        return (query.uniqueResult() != null);
+    }
+    
+    
     
 }

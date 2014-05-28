@@ -16,6 +16,8 @@ import bo.com.kibo.dal.impl.FormularioCortaHibernateDAO;
 import bo.com.kibo.dal.impl.FormularioExtraccionHibernateDAO;
 import bo.com.kibo.dal.impl.FormularioMovimientoHibernateDAO;
 import bo.com.kibo.dal.impl.PatioHibernateDAO;
+import bo.com.kibo.dal.impl.RolPermisoHibernateDAO;
+import bo.com.kibo.dal.impl.UsuarioHibernateDAO;
 import bo.com.kibo.dal.intf.IAreaDAO;
 import bo.com.kibo.dal.intf.ICalidadDAO;
 import bo.com.kibo.dal.intf.ICargaDAO;
@@ -28,6 +30,8 @@ import bo.com.kibo.dal.intf.IFormularioCortaDAO;
 import bo.com.kibo.dal.intf.IFormularioExtraccionDAO;
 import bo.com.kibo.dal.intf.IFormularioMovimientoDAO;
 import bo.com.kibo.dal.intf.IPatioDAO;
+import bo.com.kibo.dal.intf.IRolPermisoDAO;
+import bo.com.kibo.dal.intf.IUsuarioDAO;
 
 /**
  *
@@ -145,6 +149,26 @@ public class DAOManagerHibernate implements IDAOManager {
         return destinoDAO;
     }
 
+    private IRolPermisoDAO rolPermisoDAO;
+    @Override
+    public IRolPermisoDAO getRolPermisoDAO() {
+        if (rolPermisoDAO == null){
+            rolPermisoDAO = new RolPermisoHibernateDAO();
+        } 
+        return rolPermisoDAO;
+    }
+
+    private IUsuarioDAO usuarioDAO;
+    @Override
+    public IUsuarioDAO getUsuarioDAO() {
+        if (usuarioDAO == null){
+            usuarioDAO = new UsuarioHibernateDAO();
+        }
+        return usuarioDAO;
+    }
+    
+    
+
     @Override
     public void iniciarTransaccion() {
         HibernateUtil.getSessionFactory().getCurrentSession().beginTransaction();
@@ -157,7 +181,9 @@ public class DAOManagerHibernate implements IDAOManager {
 
     @Override
     public void cancelarTransaccion() {
-       HibernateUtil.getSessionFactory().getCurrentSession().getTransaction().rollback();
+        if (HibernateUtil.getSessionFactory().getCurrentSession().getTransaction() != null){
+            HibernateUtil.getSessionFactory().getCurrentSession().getTransaction().rollback();
+        }
     }
 
 }
