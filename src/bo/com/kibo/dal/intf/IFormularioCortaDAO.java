@@ -12,6 +12,6 @@ import bo.com.kibo.entidades.FormularioCorta;
  *
  * @author Olvinho
  */
-public interface IFormularioCortaDAO extends IGenericDAO<FormularioCorta, Integer>{
+public interface IFormularioCortaDAO extends IDAOGenerico<FormularioCorta, Integer>{
     
 }

@@ -12,6 +12,6 @@ import bo.com.kibo.entidades.FormularioCenso;
  *
  * @author Olvinho
  */
-public interface IFormularioCensoDAO extends IGenericDAO<FormularioCenso, Integer>{
+public interface IFormularioCensoDAO extends IDAOGenerico<FormularioCenso, Integer>{
     
 }

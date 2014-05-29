@@ -14,7 +14,7 @@ import org.hibernate.Query;
  *
  * @author Olvinho
  */
-public class AreaHibernateDAO extends GenericHibernateDAO<Area, Integer> implements IAreaDAO{
+public class AreaHibernateDAO extends DAOGenericoHibernate<Area, Integer> implements IAreaDAO{
 
     @Override
     public Integer getIdPorCodigo(String codigo) {

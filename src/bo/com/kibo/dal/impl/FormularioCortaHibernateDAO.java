@@ -13,6 +13,6 @@ import bo.com.kibo.entidades.FormularioCorta;
  *
  * @author Olvinho
  */
-public class FormularioCortaHibernateDAO extends GenericHibernateDAO<FormularioCorta, Integer> implements IFormularioCortaDAO{
+public class FormularioCortaHibernateDAO extends DAOGenericoHibernate<FormularioCorta, Integer> implements IFormularioCortaDAO{
     
 }

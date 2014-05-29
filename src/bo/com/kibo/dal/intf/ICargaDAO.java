@@ -12,6 +12,6 @@ import bo.com.kibo.entidades.Carga;
  *
  * @author Olvinho
  */
-public interface ICargaDAO extends IGenericDAO<Carga, Integer>{
+public interface ICargaDAO extends IDAOGenerico<Carga, Integer>{
     
 }

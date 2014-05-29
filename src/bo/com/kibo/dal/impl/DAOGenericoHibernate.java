@@ -6,7 +6,7 @@
 package bo.com.kibo.dal.impl;
 
 import bo.com.kibo.dal.impl.control.HibernateUtil;
-import bo.com.kibo.dal.intf.IGenericDAO;
+import bo.com.kibo.dal.intf.IDAOGenerico;
 import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
 import java.util.List;
@@ -21,12 +21,12 @@ import org.hibernate.criterion.Example;
  * @param <T>
  * @param <ID>
  */
-public abstract class GenericHibernateDAO<T, ID extends Serializable> implements IGenericDAO<T, ID> {
+public abstract class DAOGenericoHibernate<T, ID extends Serializable> implements IDAOGenerico<T, ID> {
 
     private final Class<T> persistentClass;
     private Session session;
 
-    public GenericHibernateDAO() {
+    public DAOGenericoHibernate() {
         this.persistentClass = (Class<T>) ((ParameterizedType) getClass().getGenericSuperclass())
                 .getActualTypeArguments()[0];
     }
@@ -69,7 +69,7 @@ public abstract class GenericHibernateDAO<T, ID extends Serializable> implements
 
     
     @Override
-    public List<T> findByExample(T exampleInstance,String... excludeProperty) {
+    public List<T> buscarPorEjemplo(T exampleInstance,String... excludeProperty) {
         Criteria crit = getSession().createCriteria(getPersistentClass());
         Example example = Example.create(exampleInstance);
         for (String exclude : excludeProperty) {
@@ -86,12 +86,12 @@ public abstract class GenericHibernateDAO<T, ID extends Serializable> implements
     }
 
     @Override
-    public void flush() {
+    public void ejecutarOperacionesSesion() {
         getSession().flush();
     }
 
     @Override
-    public void clear() {
+    public void limpiarSesion() {
         getSession().clear();
     }
 

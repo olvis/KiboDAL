@@ -13,6 +13,6 @@ import bo.com.kibo.entidades.RolPermisoId;
  *
  * @author Olvinho
  */
-public interface IRolPermisoDAO extends IGenericDAO<RolPermiso, RolPermisoId>{
+public interface IRolPermisoDAO extends IDAOGenerico<RolPermiso, RolPermisoId>{
     
 }

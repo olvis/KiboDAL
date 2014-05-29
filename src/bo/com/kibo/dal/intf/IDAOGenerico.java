@@ -15,12 +15,12 @@ import java.util.List;
  * @param <T>
  * @param <ID>
  */
-public interface IGenericDAO<T, ID extends Serializable> {
+public interface IDAOGenerico<T, ID extends Serializable> {
     T obtenerPorId(ID id);
     T recuperarPorId(ID id);
     List<T> obtenerTodos();
-    List<T> findByExample(T exampleInstance, String... excludeProperty);
+    List<T> buscarPorEjemplo(T exampleInstance, String... excludeProperty);
     T persistir(T entity);
-    void flush();
-    void clear();
+    void ejecutarOperacionesSesion();
+    void limpiarSesion();
 }

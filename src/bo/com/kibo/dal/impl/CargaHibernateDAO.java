@@ -13,6 +13,6 @@ import bo.com.kibo.entidades.Carga;
  *
  * @author Olvinho
  */
-public class CargaHibernateDAO extends GenericHibernateDAO<Carga, Integer> implements ICargaDAO{
+public class CargaHibernateDAO extends DAOGenericoHibernate<Carga, Integer> implements ICargaDAO{
    
 }

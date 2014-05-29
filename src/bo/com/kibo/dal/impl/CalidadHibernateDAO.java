@@ -13,6 +13,6 @@ import bo.com.kibo.entidades.Calidad;
  *
  * @author Olvinho
  */
-public class CalidadHibernateDAO extends GenericHibernateDAO<Calidad, Integer> implements ICalidadDAO{
+public class CalidadHibernateDAO extends DAOGenericoHibernate<Calidad, Integer> implements ICalidadDAO{
     
 }

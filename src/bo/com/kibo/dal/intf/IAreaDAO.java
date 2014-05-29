@@ -12,7 +12,7 @@ import bo.com.kibo.entidades.Area;
  *
  * @author Olvinho
  */
-public interface IAreaDAO extends IGenericDAO<Area, Integer>{
+public interface IAreaDAO extends IDAOGenerico<Area, Integer>{
     
     Integer getIdPorCodigo(String codigo);
     

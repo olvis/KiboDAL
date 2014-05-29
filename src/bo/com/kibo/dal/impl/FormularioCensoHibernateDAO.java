@@ -13,6 +13,6 @@ import bo.com.kibo.entidades.FormularioCenso;
  *
  * @author Olvinho
  */
-public class FormularioCensoHibernateDAO extends GenericHibernateDAO<FormularioCenso, Integer> implements IFormularioCensoDAO{
+public class FormularioCensoHibernateDAO extends DAOGenericoHibernate<FormularioCenso, Integer> implements IFormularioCensoDAO{
     
 }

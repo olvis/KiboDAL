@@ -13,6 +13,6 @@ import bo.com.kibo.entidades.FormularioMovimiento;
  *
  * @author Olvinho
  */
-public class FormularioMovimientoHibernateDAO extends GenericHibernateDAO<FormularioMovimiento, Integer> implements IFormularioMovimientoDAO{
+public class FormularioMovimientoHibernateDAO extends DAOGenericoHibernate<FormularioMovimiento, Integer> implements IFormularioMovimientoDAO{
     
 }

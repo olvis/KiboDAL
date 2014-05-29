@@ -13,6 +13,6 @@ import bo.com.kibo.entidades.Patio;
  *
  * @author Olvinho
  */
-public class PatioHibernateDAO extends GenericHibernateDAO<Patio, Integer> implements IPatioDAO{
+public class PatioHibernateDAO extends DAOGenericoHibernate<Patio, Integer> implements IPatioDAO{
     
 }

@@ -12,6 +12,6 @@ import bo.com.kibo.entidades.Faja;
  *
  * @author Olvinho
  */
-public interface IFajaDAO extends IGenericDAO<Faja, Integer>{
+public interface IFajaDAO extends IDAOGenerico<Faja, Integer>{
     
 }

@@ -13,6 +13,6 @@ import bo.com.kibo.entidades.Especie;
  *
  * @author Olvinho
  */
-public class EspecieHibernateDAO extends GenericHibernateDAO<Especie, Integer> implements IEspecieDAO{
+public class EspecieHibernateDAO extends DAOGenericoHibernate<Especie, Integer> implements IEspecieDAO{
     
 }

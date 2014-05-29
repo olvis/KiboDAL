@@ -13,6 +13,6 @@ import bo.com.kibo.entidades.Destino;
  *
  * @author Olvinho
  */
-public class DestinoHibernateDAO extends GenericHibernateDAO<Destino, Integer> implements IDestinoDAO{
+public class DestinoHibernateDAO extends DAOGenericoHibernate<Destino, Integer> implements IDestinoDAO{
     
 }

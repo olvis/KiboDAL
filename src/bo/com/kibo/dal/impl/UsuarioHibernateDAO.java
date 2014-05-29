@@ -13,6 +13,6 @@ import bo.com.kibo.entidades.Usuario;
  *
  * @author Olvinho
  */
-public class UsuarioHibernateDAO extends GenericHibernateDAO<Usuario, Integer> implements IUsuarioDAO{
+public class UsuarioHibernateDAO extends DAOGenericoHibernate<Usuario, Integer> implements IUsuarioDAO{
     
 }

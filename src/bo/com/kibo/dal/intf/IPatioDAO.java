@@ -12,6 +12,6 @@ import bo.com.kibo.entidades.Patio;
  *
  * @author Olvinho
  */
-public interface IPatioDAO  extends IGenericDAO<Patio, Integer>{
+public interface IPatioDAO  extends IDAOGenerico<Patio, Integer>{
     
 }

@@ -14,6 +14,6 @@ import bo.com.kibo.entidades.RolPermisoId;
  *
  * @author Olvinho
  */
-public class RolPermisoHibernateDAO extends GenericHibernateDAO<RolPermiso, RolPermisoId> implements IRolPermisoDAO{
+public class RolPermisoHibernateDAO extends DAOGenericoHibernate<RolPermiso, RolPermisoId> implements IRolPermisoDAO{
     
 }

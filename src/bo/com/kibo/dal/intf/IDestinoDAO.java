@@ -12,6 +12,6 @@ import bo.com.kibo.entidades.Destino;
  *
  * @author Olvinho
  */
-public interface IDestinoDAO extends IGenericDAO<Destino, Integer>{
+public interface IDestinoDAO extends IDAOGenerico<Destino, Integer>{
     
 }

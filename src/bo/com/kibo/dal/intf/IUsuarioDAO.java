@@ -12,6 +12,6 @@ import bo.com.kibo.entidades.Usuario;
  *
  * @author Olvinho
  */
-public interface IUsuarioDAO extends IGenericDAO<Usuario, Integer>{
+public interface IUsuarioDAO extends IDAOGenerico<Usuario, Integer>{
     
 }

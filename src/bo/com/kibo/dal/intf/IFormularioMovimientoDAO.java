@@ -12,6 +12,6 @@ import bo.com.kibo.entidades.FormularioMovimiento;
  *
  * @author Olvinho
  */
-public interface IFormularioMovimientoDAO extends IGenericDAO<FormularioMovimiento, Integer>{
+public interface IFormularioMovimientoDAO extends IDAOGenerico<FormularioMovimiento, Integer>{
     
 }

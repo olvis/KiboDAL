@@ -5,6 +5,7 @@
  */
 package bo.com.kibo.dal.impl.control;
 
+import java.util.logging.Logger;
 import org.hibernate.HibernateException;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -32,7 +33,7 @@ public class HibernateUtil {
             sessionFactory = configuration.buildSessionFactory(serviceRegistry);
         } catch (HibernateException ex) {
             // Log the exception. 
-            System.err.println("Initial SessionFactory creation failed." + ex);
+            System.out.println("Initial SessionFactory creation failed." + ex);
             throw new ExceptionInInitializerError(ex);
         }
     }

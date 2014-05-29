@@ -12,14 +12,14 @@ import bo.com.kibo.dal.intf.control.IDAOManager;
  *
  * @author Olvinho
  */
-public class DAOManagerFactory {
-    private static final ThreadLocal<IDAOManager> box = new ThreadLocal<>();
+public class FactoriaDAOManager {
+    private static final ThreadLocal<IDAOManager> caja = new ThreadLocal<>();
     
     public static IDAOManager getDAOManager(){
-        IDAOManager daoManager = box.get();
+        IDAOManager daoManager = caja.get();
         if (daoManager == null){
             daoManager = new DAOManagerHibernate();
-            box.set(daoManager);
+            caja.set(daoManager);
         }
         return daoManager;
     }

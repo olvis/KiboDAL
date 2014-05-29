@@ -14,6 +14,6 @@ import bo.com.kibo.entidades.FormularioExtraccion;
  *
  * @author Olvinho
  */
-public class FormularioExtraccionHibernateDAO extends GenericHibernateDAO<FormularioExtraccion, Integer> implements IFormularioExtraccionDAO{
+public class FormularioExtraccionHibernateDAO extends DAOGenericoHibernate<FormularioExtraccion, Integer> implements IFormularioExtraccionDAO{
     
 }

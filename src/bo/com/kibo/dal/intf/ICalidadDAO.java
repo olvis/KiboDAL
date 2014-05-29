@@ -12,6 +12,6 @@ import bo.com.kibo.entidades.Calidad;
  *
  * @author Olvinho
  */
-public interface ICalidadDAO  extends IGenericDAO<Calidad, Integer>{
+public interface ICalidadDAO  extends IDAOGenerico<Calidad, Integer>{
     
 }

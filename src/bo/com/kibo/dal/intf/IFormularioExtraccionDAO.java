@@ -12,6 +12,6 @@ import bo.com.kibo.entidades.FormularioExtraccion;
  *
  * @author Olvinho
  */
-public interface IFormularioExtraccionDAO  extends IGenericDAO<FormularioExtraccion, Integer>{
+public interface IFormularioExtraccionDAO  extends IDAOGenerico<FormularioExtraccion, Integer>{
     
 }

@@ -13,6 +13,6 @@ import bo.com.kibo.entidades.Faja;
  *
  * @author Olvinho
  */
-public class FajaHibernateDAO extends GenericHibernateDAO<Faja, Integer> implements IFajaDAO{
+public class FajaHibernateDAO extends DAOGenericoHibernate<Faja, Integer> implements IFajaDAO{
     
 }
