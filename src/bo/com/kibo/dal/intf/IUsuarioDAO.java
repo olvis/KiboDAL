@@ -15,5 +15,6 @@ import bo.com.kibo.entidades.Usuario;
 public interface IUsuarioDAO extends IDAOGenerico<Usuario, Integer>{
     
     public Integer getIdUsuarioPorEmail(String email);
+    public Usuario logear(String usuario, String pass);
     
 }

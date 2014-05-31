@@ -22,5 +22,13 @@ public class UsuarioHibernateDAO extends DAOGenericoHibernate<Usuario, Integer> 
         query.setParameter("email", email);
         return (Integer)query.uniqueResult();
     }
+
+    @Override
+    public Usuario logear(String usuario, String pass) {
+        Query query = getSession().createQuery("FROM Usuario u WHERE u.nombre = :nombre AND u.contrasena = :contrasena "   );
+        query.setParameter("nombre", usuario);
+        query.setParameter("contrasena", pass);
+        return (Usuario)query.uniqueResult();
+    }
     
 }
