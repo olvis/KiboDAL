@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
     <joined-subclass name="bo.com.kibo.entidades.FormularioCorta" table="t102_cor_cab" extends="bo.com.kibo.entidades.EncabezadoFormulario">
+        <key column="cor_cab_id"/>
         <many-to-one class="bo.com.kibo.entidades.Area" fetch="select" name="area">
             <column name="cor_area"/>
         </many-to-one>

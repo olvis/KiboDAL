@@ -5,9 +5,11 @@
  */
 package bo.com.kibo.dal.impl.control;
 
+import bo.com.kibo.dal.exceptions.DAOException;
 import bo.com.kibo.dal.impl.AreaHibernateDAO;
 import bo.com.kibo.dal.impl.CalidadHibernateDAO;
 import bo.com.kibo.dal.impl.CargaHibernateDAO;
+import bo.com.kibo.dal.impl.DAOGenericoHibernate;
 import bo.com.kibo.dal.impl.DestinoHibernateDAO;
 import bo.com.kibo.dal.impl.EspecieHibernateDAO;
 import bo.com.kibo.dal.impl.FajaHibernateDAO;
@@ -32,12 +34,18 @@ import bo.com.kibo.dal.intf.IFormularioMovimientoDAO;
 import bo.com.kibo.dal.intf.IPatioDAO;
 import bo.com.kibo.dal.intf.IRolPermisoDAO;
 import bo.com.kibo.dal.intf.IUsuarioDAO;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
 
 /**
  *
  * @author Olvinho
  */
 public class DAOManagerHibernate implements IDAOManager {
+
+    private static final Logger LOG = Logger.getLogger(DAOManagerHibernate.class.getName());
 
     public DAOManagerHibernate() {
 
@@ -49,6 +57,7 @@ public class DAOManagerHibernate implements IDAOManager {
     public IAreaDAO getAreaDAO() {
         if (areaDAO == null) {
             areaDAO = new AreaHibernateDAO();
+            asignarSesionActual((DAOGenericoHibernate) areaDAO);
         }
         return areaDAO;
     }
@@ -59,6 +68,7 @@ public class DAOManagerHibernate implements IDAOManager {
     public ICalidadDAO getCalidadDAO() {
         if (calidadDAO == null) {
             calidadDAO = new CalidadHibernateDAO();
+            asignarSesionActual((DAOGenericoHibernate) calidadDAO);
         }
         return calidadDAO;
     }
@@ -69,6 +79,7 @@ public class DAOManagerHibernate implements IDAOManager {
     public IEspecieDAO getEspecieDAO() {
         if (especieDAO == null) {
             especieDAO = new EspecieHibernateDAO();
+            asignarSesionActual((DAOGenericoHibernate) especieDAO);
         }
         return especieDAO;
     }
@@ -79,6 +90,7 @@ public class DAOManagerHibernate implements IDAOManager {
     public IFormularioCensoDAO getFormularioCensoDAO() {
         if (formularioCensoDAO == null) {
             formularioCensoDAO = new FormularioCensoHibernateDAO();
+            asignarSesionActual((DAOGenericoHibernate) formularioCensoDAO);
         }
         return formularioCensoDAO;
     }
@@ -89,6 +101,7 @@ public class DAOManagerHibernate implements IDAOManager {
     public IFormularioCortaDAO getFormularioCortaDAO() {
         if (formularioCortaDAO == null) {
             formularioCortaDAO = new FormularioCortaHibernateDAO();
+            asignarSesionActual((DAOGenericoHibernate) formularioCortaDAO);
         }
         return formularioCortaDAO;
     }
@@ -99,6 +112,7 @@ public class DAOManagerHibernate implements IDAOManager {
     public IFormularioExtraccionDAO getFormularioExtraccionDAO() {
         if (formularioExtraccionDAO == null) {
             formularioExtraccionDAO = new FormularioExtraccionHibernateDAO();
+            asignarSesionActual((DAOGenericoHibernate) formularioExtraccionDAO);
         }
         return formularioExtraccionDAO;
     }
@@ -109,81 +123,139 @@ public class DAOManagerHibernate implements IDAOManager {
     public IFormularioMovimientoDAO getFormularioMovimientoDAO() {
         if (formularioMovimientoDAO == null) {
             formularioMovimientoDAO = new FormularioMovimientoHibernateDAO();
+            asignarSesionActual((DAOGenericoHibernate) formularioMovimientoDAO);
         }
         return formularioMovimientoDAO;
     }
 
     private ICargaDAO cargaDAO;
+
     @Override
     public ICargaDAO getCargaDAO() {
-        if (cargaDAO == null){
+        if (cargaDAO == null) {
             cargaDAO = new CargaHibernateDAO();
+            asignarSesionActual((DAOGenericoHibernate) cargaDAO);
         }
         return cargaDAO;
     }
 
     private IPatioDAO patioDAO;
+
     @Override
     public IPatioDAO getPatioDAO() {
-        if (patioDAO == null){
+        if (patioDAO == null) {
             patioDAO = new PatioHibernateDAO();
+            asignarSesionActual((DAOGenericoHibernate) patioDAO);
         }
         return patioDAO;
     }
 
     private IFajaDAO fajaDAO;
+
     @Override
     public IFajaDAO getFajaDAO() {
-        if (fajaDAO == null){
+        if (fajaDAO == null) {
             fajaDAO = new FajaHibernateDAO();
+            asignarSesionActual((DAOGenericoHibernate) fajaDAO);
         }
         return fajaDAO;
     }
 
     private IDestinoDAO destinoDAO;
+
     @Override
     public IDestinoDAO getDestinoDAO() {
-        if (destinoDAO == null){
+        if (destinoDAO == null) {
             destinoDAO = new DestinoHibernateDAO();
+            asignarSesionActual((DAOGenericoHibernate) destinoDAO);
         }
         return destinoDAO;
     }
 
     private IRolPermisoDAO rolPermisoDAO;
+
     @Override
     public IRolPermisoDAO getRolPermisoDAO() {
-        if (rolPermisoDAO == null){
+        if (rolPermisoDAO == null) {
             rolPermisoDAO = new RolPermisoHibernateDAO();
-        } 
+            asignarSesionActual((DAOGenericoHibernate) rolPermisoDAO);
+        }
         return rolPermisoDAO;
     }
 
     private IUsuarioDAO usuarioDAO;
+
     @Override
     public IUsuarioDAO getUsuarioDAO() {
-        if (usuarioDAO == null){
+        if (usuarioDAO == null) {
             usuarioDAO = new UsuarioHibernateDAO();
+            asignarSesionActual((DAOGenericoHibernate) usuarioDAO);
         }
         return usuarioDAO;
     }
-    
-    
+
+    private void asignarSesionActual(DAOGenericoHibernate dao) {
+        if (dao != null) {
+            dao.setSession(sesion);
+        }
+    }
+
+    private void asignarNuevaSesion() {
+        asignarSesionActual((DAOGenericoHibernate) areaDAO);
+        asignarSesionActual((DAOGenericoHibernate) calidadDAO);
+        asignarSesionActual((DAOGenericoHibernate) especieDAO);
+        asignarSesionActual((DAOGenericoHibernate) formularioCensoDAO);
+        asignarSesionActual((DAOGenericoHibernate) formularioCortaDAO);
+        asignarSesionActual((DAOGenericoHibernate) formularioExtraccionDAO);
+        asignarSesionActual((DAOGenericoHibernate) formularioExtraccionDAO);
+        asignarSesionActual((DAOGenericoHibernate) cargaDAO);
+        asignarSesionActual((DAOGenericoHibernate) patioDAO);
+        asignarSesionActual((DAOGenericoHibernate) fajaDAO);
+        asignarSesionActual((DAOGenericoHibernate) destinoDAO);
+        asignarSesionActual((DAOGenericoHibernate) rolPermisoDAO);
+        asignarSesionActual((DAOGenericoHibernate) usuarioDAO);
+
+    }
+
+    Session sesion;
 
     @Override
     public void iniciarTransaccion() {
-        HibernateUtil.getSessionFactory().getCurrentSession().beginTransaction();
+        try {
+            sesion = HibernateUtil.getSessionFactory().openSession();
+            asignarNuevaSesion();
+            sesion.beginTransaction();
+        } catch (HibernateException e) {
+            LOG.log(Level.SEVERE, null, e);
+            throw new DAOException("Imposible iniciar la transacción", e);
+        }
+
     }
 
     @Override
     public void confirmarTransaccion() {
-        HibernateUtil.getSessionFactory().getCurrentSession().getTransaction().commit();
+        try {
+            sesion.getTransaction().commit();
+            sesion.close();
+        } catch (HibernateException e) {
+            LOG.log(Level.SEVERE, null, e);
+            throw new DAOException("Imposible confirmar la transacción", e);
+        }
+
     }
 
     @Override
     public void cancelarTransaccion() {
-        if (HibernateUtil.getSessionFactory().getCurrentSession().getTransaction() != null){
-            HibernateUtil.getSessionFactory().getCurrentSession().getTransaction().rollback();
+        try {
+            if (sesion.getTransaction() != null) {
+                sesion.getTransaction().rollback();
+            }
+            sesion.close();
+        } catch (HibernateException e) {
+            LOG.log(Level.SEVERE, null, e);
+            throw new DAOException("Imposible cancelar la trasancción", e);
         }
+
     }
 
 }

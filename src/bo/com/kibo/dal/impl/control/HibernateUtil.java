@@ -5,6 +5,7 @@
  */
 package bo.com.kibo.dal.impl.control;
 
+import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.hibernate.HibernateException;
 import org.hibernate.SessionFactory;
@@ -19,7 +20,9 @@ import org.hibernate.service.ServiceRegistryBuilder;
  * @author Olvinho
  */
 public class HibernateUtil {
+    private static final Logger LOG = Logger.getLogger(HibernateUtil.class.getName());
 
+    
     private static final SessionFactory sessionFactory;
     private static final ServiceRegistry serviceRegistry;
 
@@ -31,9 +34,9 @@ public class HibernateUtil {
             configuration.configure();
             serviceRegistry = new ServiceRegistryBuilder().applySettings(configuration.getProperties()).buildServiceRegistry();
             sessionFactory = configuration.buildSessionFactory(serviceRegistry);
-        } catch (HibernateException ex) {
+        } catch (Throwable ex) {
             // Log the exception. 
-            System.out.println("Initial SessionFactory creation failed." + ex);
+            LOG.log(Level.SEVERE,"Initial SessionFactory creation failed.", ex);
             throw new ExceptionInInitializerError(ex);
         }
     }

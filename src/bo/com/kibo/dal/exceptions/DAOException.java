@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package bo.com.kibo.exceptions;
+package bo.com.kibo.dal.exceptions;
 
 /**
  *

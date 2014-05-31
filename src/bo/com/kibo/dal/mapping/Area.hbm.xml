@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
     <joined-subclass name="bo.com.kibo.entidades.Area" table="t01_area" extends="bo.com.kibo.entidades.GeoLugar">
+        <key column="area_id"/>
         <property name="codigo" type="string">
             <column name="area_codigo" length="15" not-null="true" unique="true" />
         </property>
