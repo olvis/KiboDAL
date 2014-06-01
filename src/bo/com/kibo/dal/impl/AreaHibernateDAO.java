@@ -18,14 +18,14 @@ public class AreaHibernateDAO extends DAOGenericoHibernate<Area, Integer> implem
 
     @Override
     public Integer getIdPorCodigo(String codigo) {
-        Query query = getSession().createQuery("SELECT id fom Area a WHERE a.codigo = :codigo");
+        Query query = getSession().createQuery("SELECT id from Area a WHERE a.codigo = :codigo");
         query.setParameter("codigo", codigo);
         return (Integer)query.uniqueResult();
     }
 
     @Override
     public boolean checkId(Integer id) {
-        Query query = getSession().createQuery("SELECT 1 fom Area a WHERE a.id = :id");
+        Query query = getSession().createQuery("SELECT 1 from Area a WHERE a.id = :id");
         query.setParameter("id", id);
         return (query.uniqueResult() != null);
     }

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-    <class name="bo.com.kibo.entidades.RolPermiso" table="rol_permsio">
+    <class name="bo.com.kibo.entidades.RolPermiso" table="rol_permiso">
         <composite-id name="id" class="bo.com.kibo.entidades.RolPermisoId">
             <key-property name="idPermiso" type="int">
                 <column name="perm_id" />
