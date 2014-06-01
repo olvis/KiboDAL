@@ -18,6 +18,7 @@ import bo.com.kibo.dal.impl.FormularioCortaHibernateDAO;
 import bo.com.kibo.dal.impl.FormularioExtraccionHibernateDAO;
 import bo.com.kibo.dal.impl.FormularioMovimientoHibernateDAO;
 import bo.com.kibo.dal.impl.PatioHibernateDAO;
+import bo.com.kibo.dal.impl.RolHibernateDAO;
 import bo.com.kibo.dal.impl.RolPermisoHibernateDAO;
 import bo.com.kibo.dal.impl.UsuarioHibernateDAO;
 import bo.com.kibo.dal.intf.IAreaDAO;
@@ -32,6 +33,7 @@ import bo.com.kibo.dal.intf.IFormularioCortaDAO;
 import bo.com.kibo.dal.intf.IFormularioExtraccionDAO;
 import bo.com.kibo.dal.intf.IFormularioMovimientoDAO;
 import bo.com.kibo.dal.intf.IPatioDAO;
+import bo.com.kibo.dal.intf.IRolDAO;
 import bo.com.kibo.dal.intf.IRolPermisoDAO;
 import bo.com.kibo.dal.intf.IUsuarioDAO;
 import java.util.logging.Level;
@@ -193,6 +195,17 @@ public class DAOManagerHibernate implements IDAOManager {
         }
         return usuarioDAO;
     }
+    
+    private IRolDAO rolDAO;
+    
+    @Override
+    public IRolDAO getRolDAO() {
+       if (rolDAO == null){
+           rolDAO = new RolHibernateDAO();
+           asignarSesionActual((DAOGenericoHibernate)rolDAO);
+       }
+       return rolDAO;
+    }
 
     private void asignarSesionActual(DAOGenericoHibernate dao) {
         if (dao != null) {
@@ -214,6 +227,7 @@ public class DAOManagerHibernate implements IDAOManager {
         asignarSesionActual((DAOGenericoHibernate) destinoDAO);
         asignarSesionActual((DAOGenericoHibernate) rolPermisoDAO);
         asignarSesionActual((DAOGenericoHibernate) usuarioDAO);
+        asignarSesionActual((DAOGenericoHibernate) rolDAO);
 
     }
 
@@ -257,5 +271,7 @@ public class DAOManagerHibernate implements IDAOManager {
         }
 
     }
+
+
 
 }
