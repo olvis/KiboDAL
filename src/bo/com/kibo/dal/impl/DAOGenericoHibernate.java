@@ -81,7 +81,7 @@ public abstract class DAOGenericoHibernate<T, ID extends Serializable> implement
 
     @Override
     public T persistir(T entity) {
-        getSession().saveOrUpdate(entity);
+        getSession().merge(entity);
         return entity;
     }
 

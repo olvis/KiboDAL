@@ -12,6 +12,12 @@ import bo.com.kibo.entidades.Faja;
  *
  * @author Olvinho
  */
-public interface IFajaDAO extends IDAOGenerico<Faja, Integer>{
+public interface IFajaDAO extends IGeoLugarDAO<Faja>{
+    /***
+     * Busca por Area, Numero y Bloque una faja
+     * @param faja La entidad que contiene Area, Numero y Bloque
+     * @return Verdadero si ya existe una faja con número y bloque especificado en el área.
+     */
+    boolean existeFaja(Faja faja);
     
 }

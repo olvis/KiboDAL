@@ -14,7 +14,7 @@ import org.hibernate.Query;
  *
  * @author Olvinho
  */
-public class AreaHibernateDAO extends DAOGenericoHibernate<Area, Integer> implements IAreaDAO{
+public class AreaHibernateDAO extends GeoLugarHibernateDAO<Area> implements IAreaDAO{
 
     @Override
     public Integer getIdPorCodigo(String codigo) {
@@ -28,6 +28,13 @@ public class AreaHibernateDAO extends DAOGenericoHibernate<Area, Integer> implem
         Query query = getSession().createQuery("SELECT 1 from Area a WHERE a.id = :id");
         query.setParameter("id", id);
         return (query.uniqueResult() != null);
+    }
+
+    @Override
+    public String getCodigo(Integer id) {
+        Query query = getSession().createQuery("SELECT codigo from Area a WHERE a.id = :id");
+        query.setParameter("id", id);
+        return (String)query.uniqueResult();
     }
     
     

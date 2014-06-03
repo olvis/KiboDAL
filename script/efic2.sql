@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jun 01, 2014 at 12:26 AM
+-- Generation Time: Jun 03, 2014 at 01:33 AM
 -- Server version: 5.5.16
 -- PHP Version: 5.3.8
 
@@ -92,14 +92,15 @@ CREATE TABLE IF NOT EXISTS `rol` (
   `rol_descripcion` varchar(50) NOT NULL,
   PRIMARY KEY (`rol_id`),
   UNIQUE KEY `UQ_rol_rol_descripcion` (`rol_descripcion`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `rol`
 --
 
 INSERT INTO `rol` (`rol_id`, `rol_descripcion`) VALUES
-(1, 'Administrador');
+(1, 'Administrador'),
+(2, 'Censador');
 
 -- --------------------------------------------------------
 
@@ -122,46 +123,87 @@ CREATE TABLE IF NOT EXISTS `rol_permiso` (
 
 INSERT INTO `rol_permiso` (`perm_id`, `rol_id`, `valor`) VALUES
 (1, 1, '1'),
+(1, 2, '0'),
 (101, 1, '1'),
+(101, 2, '0'),
 (102, 1, '1'),
+(102, 2, '0'),
 (103, 1, '1'),
+(103, 2, '0'),
 (104, 1, '1'),
+(104, 2, '0'),
 (105, 1, '1'),
+(105, 2, '0'),
 (106, 1, '1'),
+(106, 2, '0'),
 (107, 1, '1'),
+(107, 2, '0'),
 (108, 1, '1'),
+(108, 2, '0'),
 (109, 1, '1'),
+(109, 2, '0'),
 (110, 1, '1'),
+(110, 2, '0'),
 (111, 1, '1'),
+(111, 2, '0'),
 (10101, 1, '1'),
+(10101, 2, '0'),
 (10102, 1, '1'),
+(10102, 2, '0'),
 (10104, 1, '1'),
+(10104, 2, '0'),
 (10201, 1, '1'),
+(10201, 2, '0'),
 (10202, 1, '1'),
+(10202, 2, '0'),
 (10204, 1, '1'),
+(10204, 2, '0'),
 (10301, 1, '1'),
+(10301, 2, '0'),
 (10302, 1, '1'),
+(10302, 2, '0'),
 (10304, 1, '1'),
+(10304, 2, '0'),
 (10401, 1, '1'),
+(10401, 2, '0'),
 (10402, 1, '1'),
+(10402, 2, '0'),
 (10501, 1, '1'),
+(10501, 2, '0'),
 (10502, 1, '1'),
+(10502, 2, '0'),
 (10601, 1, '1'),
+(10601, 2, '0'),
 (10602, 1, '1'),
+(10602, 2, '0'),
 (10604, 1, '1'),
+(10604, 2, '0'),
 (10701, 1, '1'),
+(10701, 2, '0'),
 (10702, 1, '1'),
+(10702, 2, '0'),
 (10704, 1, '1'),
+(10704, 2, '0'),
 (10801, 1, '1'),
+(10801, 2, '0'),
 (10802, 1, '1'),
+(10802, 2, '0'),
 (10804, 1, '1'),
+(10804, 2, '0'),
 (10901, 1, '1'),
+(10901, 2, '0'),
 (10902, 1, '1'),
+(10902, 2, '0'),
 (11001, 1, '1'),
+(11001, 2, '0'),
 (11002, 1, '1'),
+(11002, 2, '0'),
 (11101, 1, '1'),
+(11101, 2, '0'),
 (11102, 1, '1'),
-(11104, 1, '1');
+(11102, 2, '0'),
+(11104, 1, '1'),
+(11104, 2, '0');
 
 -- --------------------------------------------------------
 
@@ -179,6 +221,14 @@ CREATE TABLE IF NOT EXISTS `t01_area` (
   PRIMARY KEY (`area_id`),
   UNIQUE KEY `UQ_t01_area_area_codigo` (`area_codigo`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `t01_area`
+--
+
+INSERT INTO `t01_area` (`area_id`, `area_codigo`, `area_anio_inicial`, `area_anio_final`, `area_zona_utm`, `area_banda_utm`) VALUES
+(1, 'PCA1', 2015, NULL, 5, 'G'),
+(2, 'PCA2', 2014, 2015, 9, 'J');
 
 -- --------------------------------------------------------
 
@@ -252,7 +302,15 @@ CREATE TABLE IF NOT EXISTS `t09_geo_lugar` (
   `modificado` datetime DEFAULT NULL,
   `tipo` tinyint(4) NOT NULL,
   PRIMARY KEY (`lugar_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `t09_geo_lugar`
+--
+
+INSERT INTO `t09_geo_lugar` (`lugar_id`, `modificado`, `tipo`) VALUES
+(1, NULL, 0),
+(2, NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -267,6 +325,14 @@ CREATE TABLE IF NOT EXISTS `t09_geo_lugar_polig` (
   `posicion` int(11) DEFAULT NULL,
   KEY `lugar_id` (`lugar_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `t09_geo_lugar_polig`
+--
+
+INSERT INTO `t09_geo_lugar_polig` (`lugar_id`, `x`, `y`, `posicion`) VALUES
+(2, 23, 23, 0),
+(2, 23, 23, 1);
 
 -- --------------------------------------------------------
 
@@ -521,7 +587,14 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   UNIQUE KEY `UQ_usuario_usr_email` (`usr_email`),
   UNIQUE KEY `UQ_usuario_usr_nombre` (`usr_nombre`),
   KEY `usr_rol` (`usr_rol`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `usuario`
+--
+
+INSERT INTO `usuario` (`usr_id`, `usr_nombre`, `usr_contrasena`, `usr_rol`, `usr_email`) VALUES
+(2, 'admin', 'admin', 1, 'ocamachou@gmail.com');
 
 --
 -- Constraints for dumped tables
