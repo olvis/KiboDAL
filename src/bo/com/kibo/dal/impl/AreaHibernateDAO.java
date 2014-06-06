@@ -36,6 +36,13 @@ public class AreaHibernateDAO extends GeoLugarHibernateDAO<Area> implements IAre
         query.setParameter("id", id);
         return (String)query.uniqueResult();
     }
+
+    @Override
+    public Area recuperarPorCodigo(String codigo) {
+        Query query = getSession().createQuery("from Area a WHERE a.codigo = :codigo");
+        query.setParameter("codigo", codigo);
+        return (Area)query.uniqueResult();
+    }
     
     
     

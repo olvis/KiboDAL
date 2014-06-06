@@ -6,6 +6,9 @@
       <many-to-one name="area" class="bo.com.kibo.entidades.Area" fetch="select">
           <column name="cen_area" />
       </many-to-one>
+      <many-to-one name="faja" class="bo.com.kibo.entidades.Faja" fetch="select">
+          <column name="cen_faja" />
+      </many-to-one>
       <property name="horas" type="java.lang.Byte">
           <column name="cen_horas" />
       </property>

@@ -14,4 +14,10 @@ import bo.com.kibo.entidades.Especie;
  */
 public interface IEspecieDAO extends IDAOGenerico<Especie, Integer>{
     
+    public Integer getIdPorNombre(String nombre);
+    
+    public boolean checkId(Integer id);
+    
+    public String getNombre(Integer id);
+    
 }

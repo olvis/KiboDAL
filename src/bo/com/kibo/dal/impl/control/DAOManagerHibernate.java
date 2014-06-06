@@ -20,6 +20,7 @@ import bo.com.kibo.dal.impl.FormularioMovimientoHibernateDAO;
 import bo.com.kibo.dal.impl.PatioHibernateDAO;
 import bo.com.kibo.dal.impl.RolHibernateDAO;
 import bo.com.kibo.dal.impl.RolPermisoHibernateDAO;
+import bo.com.kibo.dal.impl.TrozaHibernateDAO;
 import bo.com.kibo.dal.impl.UsuarioHibernateDAO;
 import bo.com.kibo.dal.intf.IAreaDAO;
 import bo.com.kibo.dal.intf.ICalidadDAO;
@@ -35,6 +36,7 @@ import bo.com.kibo.dal.intf.IFormularioMovimientoDAO;
 import bo.com.kibo.dal.intf.IPatioDAO;
 import bo.com.kibo.dal.intf.IRolDAO;
 import bo.com.kibo.dal.intf.IRolPermisoDAO;
+import bo.com.kibo.dal.intf.ITrozaDAO;
 import bo.com.kibo.dal.intf.IUsuarioDAO;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -195,16 +197,27 @@ public class DAOManagerHibernate implements IDAOManager {
         }
         return usuarioDAO;
     }
-    
+
     private IRolDAO rolDAO;
-    
+
     @Override
     public IRolDAO getRolDAO() {
-       if (rolDAO == null){
-           rolDAO = new RolHibernateDAO();
-           asignarSesionActual((DAOGenericoHibernate)rolDAO);
-       }
-       return rolDAO;
+        if (rolDAO == null) {
+            rolDAO = new RolHibernateDAO();
+            asignarSesionActual((DAOGenericoHibernate) rolDAO);
+        }
+        return rolDAO;
+    }
+
+    private ITrozaDAO trozaDAO;
+
+    @Override
+    public ITrozaDAO getTrozaDAO() {
+        if (trozaDAO == null) {
+            trozaDAO = new TrozaHibernateDAO();
+            asignarSesionActual((DAOGenericoHibernate) trozaDAO);
+        }
+        return trozaDAO;
     }
 
     private void asignarSesionActual(DAOGenericoHibernate dao) {
@@ -228,6 +241,7 @@ public class DAOManagerHibernate implements IDAOManager {
         asignarSesionActual((DAOGenericoHibernate) rolPermisoDAO);
         asignarSesionActual((DAOGenericoHibernate) usuarioDAO);
         asignarSesionActual((DAOGenericoHibernate) rolDAO);
+        asignarSesionActual((DAOGenericoHibernate) trozaDAO);
 
     }
 
@@ -271,7 +285,5 @@ public class DAOManagerHibernate implements IDAOManager {
         }
 
     }
-
-
 
 }

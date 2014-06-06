@@ -13,7 +13,7 @@
             <column name="troza_esp" not-null="true" />
         </many-to-one>
         <many-to-one name="calidad" class="bo.com.kibo.entidades.Calidad" fetch="select">
-            <column name="troza_cal" />
+            <column name="troza_cal" not-null="true"/>
         </many-to-one>
         <many-to-one name="area" class="bo.com.kibo.entidades.Area" fetch="select">
             <column name="troza_area" not-null="true" />
@@ -46,10 +46,13 @@
             <column name="cen_cab_id" not-null="true" />
         </many-to-one>
         <many-to-one name="formularioCorta" class="bo.com.kibo.entidades.FormularioCorta" fetch="select">
-            <column name="cor_cab_id" not-null="true" />
+            <column name="cor_cab_id" />
         </many-to-one>
         <many-to-one name="formularioExtraccion" class="bo.com.kibo.entidades.FormularioExtraccion" fetch="select">
-            <column name="ext_cab_id" not-null="true" />
+            <column name="ext_cab_id" />
+        </many-to-one>
+        <many-to-one name="faja" class="bo.com.kibo.entidades.Faja" fetch="select">
+            <column name="troza_faja" />
         </many-to-one>
     </class>
 </hibernate-mapping>

@@ -31,9 +31,16 @@ public interface IAreaDAO extends IGeoLugarDAO<Area>{
     
     /***
      * Devuelve el código según el Id del Área
-     * @param idArea
+     * @param id
      * @return 
      */
     String getCodigo(Integer id);
+    
+    /**
+     * Devuelve el area por el codigo
+     * @param codigo
+     * @return 
+     */
+    Area recuperarPorCodigo(String codigo);
     
 }

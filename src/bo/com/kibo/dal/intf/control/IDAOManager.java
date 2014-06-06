@@ -18,6 +18,7 @@ import bo.com.kibo.dal.intf.IFormularioMovimientoDAO;
 import bo.com.kibo.dal.intf.IPatioDAO;
 import bo.com.kibo.dal.intf.IRolDAO;
 import bo.com.kibo.dal.intf.IRolPermisoDAO;
+import bo.com.kibo.dal.intf.ITrozaDAO;
 import bo.com.kibo.dal.intf.IUsuarioDAO;
 
 /**
@@ -53,6 +54,8 @@ public interface IDAOManager {
     IUsuarioDAO getUsuarioDAO();
     
     IRolDAO getRolDAO();
+    
+    ITrozaDAO getTrozaDAO();
 
     void iniciarTransaccion();
 

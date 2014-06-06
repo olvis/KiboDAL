@@ -6,17 +6,13 @@
 
 package bo.com.kibo.dal.intf;
 
-import bo.com.kibo.entidades.Calidad;
+import bo.com.kibo.entidades.Troza;
 
 /**
  *
  * @author Olvinho
  */
-public interface ICalidadDAO  extends IDAOGenerico<Calidad, Integer>{
- 
-    Integer getIdPorCodigo(String codigo);
+public interface ITrozaDAO extends IDAOGenerico<Troza, Integer>{
     
-    boolean checkId(Integer id);
-    
-    String getCodigo(Integer id);
+    Integer getIdPorCodigoArea(String codigo, Integer idArea);
 }

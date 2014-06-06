@@ -12,5 +12,8 @@
         <property name="modificado" type="timestamp" insert="false" update="false">
             <column name="modificado" length="19" />
         </property>
+        <property name="esRama" type="boolean">
+            <column name="carga_rama" not-null="true"/>
+        </property>
     </class>
 </hibernate-mapping>

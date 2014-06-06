@@ -19,5 +19,9 @@ public interface IFajaDAO extends IGeoLugarDAO<Faja>{
      * @return Verdadero si ya existe una faja con número y bloque especificado en el área.
      */
     boolean existeFaja(Faja faja);
+
+    boolean checkId(Integer id);
+    
+    Integer getIdPorBloqueYNumero(String bloque, int numero);
     
 }
