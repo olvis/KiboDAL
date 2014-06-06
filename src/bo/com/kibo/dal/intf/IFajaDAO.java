@@ -7,6 +7,7 @@
 package bo.com.kibo.dal.intf;
 
 import bo.com.kibo.entidades.Faja;
+import java.util.List;
 
 /**
  *
@@ -23,5 +24,7 @@ public interface IFajaDAO extends IGeoLugarDAO<Faja>{
     boolean checkId(Integer id);
     
     Integer getIdPorBloqueYNumero(String bloque, int numero);
+
+    public List<Faja> obtenerFajasSegunArea(Integer idArea);
     
 }

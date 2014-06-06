@@ -7,6 +7,7 @@ package bo.com.kibo.dal.impl;
 
 import bo.com.kibo.dal.intf.IFajaDAO;
 import bo.com.kibo.entidades.Faja;
+import java.util.List;
 import org.hibernate.Query;
 
 /**
@@ -37,6 +38,13 @@ public class FajaHibernateDAO extends GeoLugarHibernateDAO<Faja> implements IFaj
         query.setParameter("numero", numero);
         query.setParameter("bloque", bloque);
         return (Integer) query.uniqueResult();
+    }
+
+    @Override
+    public List<Faja> obtenerFajasSegunArea(Integer idArea) {
+        Query query = getSession().createQuery("from Faja f Where f.area.id = :idArea");
+        query.setParameter("idArea", idArea);
+        return query.list();
     }
 
 }
