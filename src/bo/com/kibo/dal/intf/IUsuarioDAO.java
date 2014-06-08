@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package bo.com.kibo.dal.intf;
 
 import bo.com.kibo.entidades.Usuario;
@@ -12,9 +11,14 @@ import bo.com.kibo.entidades.Usuario;
  *
  * @author Olvinho
  */
-public interface IUsuarioDAO extends IDAOGenerico<Usuario, Integer>{
-    
-    public Integer getIdUsuarioPorEmail(String email);
-    public Usuario logear(String usuario, String pass);
-    
+public interface IUsuarioDAO extends IDAOGenerico<Usuario, Integer> {
+
+    Integer getIdUsuarioPorEmail(String email);
+
+    Usuario logear(String usuario, String pass);
+
+    Integer getIdPorNombre(String nombre);
+
+    boolean checkId(Integer id);
+
 }

@@ -20,6 +20,8 @@ import bo.com.kibo.dal.intf.IRolDAO;
 import bo.com.kibo.dal.intf.IRolPermisoDAO;
 import bo.com.kibo.dal.intf.ITrozaDAO;
 import bo.com.kibo.dal.intf.IUsuarioDAO;
+import bo.com.kibo.entidades.Troza;
+import java.util.List;
 
 /**
  *
@@ -48,13 +50,13 @@ public interface IDAOManager {
     IFajaDAO getFajaDAO();
 
     IDestinoDAO getDestinoDAO();
-    
+
     IRolPermisoDAO getRolPermisoDAO();
-    
+
     IUsuarioDAO getUsuarioDAO();
-    
+
     IRolDAO getRolDAO();
-    
+
     ITrozaDAO getTrozaDAO();
 
     void iniciarTransaccion();

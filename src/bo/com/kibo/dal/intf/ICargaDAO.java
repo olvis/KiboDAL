@@ -17,5 +17,7 @@ public interface ICargaDAO extends IDAOGenerico<Carga, Integer>{
     public Integer getIdPorCodigo(String codigo);
 
     public boolean checkId(Integer id);
+
+    public String getCodigo(Integer id);
     
 }

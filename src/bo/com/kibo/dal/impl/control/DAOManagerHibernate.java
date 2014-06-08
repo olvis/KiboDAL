@@ -50,7 +50,8 @@ import org.hibernate.Session;
 public class DAOManagerHibernate implements IDAOManager {
 
     private static final Logger LOG = Logger.getLogger(DAOManagerHibernate.class.getName());
-
+    private SincronizablesInterceptor interceptor = new SincronizablesInterceptor();
+    
     public DAOManagerHibernate() {
 
     }
@@ -250,7 +251,7 @@ public class DAOManagerHibernate implements IDAOManager {
     @Override
     public void iniciarTransaccion() {
         try {
-            sesion = HibernateUtil.getSessionFactory().openSession();
+            sesion = HibernateUtil.getSessionFactory().withOptions().interceptor(interceptor).openSession();
             asignarNuevaSesion();
             sesion.beginTransaction();
         } catch (HibernateException e) {

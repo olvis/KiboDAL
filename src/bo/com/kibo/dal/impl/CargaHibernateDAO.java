@@ -29,4 +29,11 @@ public class CargaHibernateDAO extends DAOGenericoHibernate<Carga, Integer> impl
         return (query.uniqueResult() != null);
     }
 
+    @Override
+    public String getCodigo(Integer id) {
+        Query query = getSession().createQuery("SELECT codigo from Carga c WHERE c.id = :id");
+        query.setParameter("id", id);
+        return (String) query.uniqueResult();
+    }
+
 }

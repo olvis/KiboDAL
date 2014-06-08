@@ -12,7 +12,7 @@
         <property name="descripcion" type="string">
             <column name="calidad_descripcion" length="50" />
         </property>
-        <property name="modificado" type="timestamp" update="false" insert="false">
+        <property name="modificado" type="timestamp">
             <column name="modificado" length="19" />
         </property>
     </class>

@@ -43,7 +43,7 @@
             <column name="troza_y" precision="12" scale="0" />
         </property>
         <many-to-one name="formularioCenso" class="bo.com.kibo.entidades.FormularioCenso" fetch="select">
-            <column name="cen_cab_id" not-null="true" />
+            <column name="cen_cab_id" />
         </many-to-one>
         <many-to-one name="formularioCorta" class="bo.com.kibo.entidades.FormularioCorta" fetch="select">
             <column name="cor_cab_id" />
@@ -54,5 +54,8 @@
         <many-to-one name="faja" class="bo.com.kibo.entidades.Faja" fetch="select">
             <column name="troza_faja" />
         </many-to-one>
+        <property name="modificado" type="timestamp">
+            <column name="modificado" length="19" />
+        </property>
     </class>
 </hibernate-mapping>

@@ -7,6 +7,7 @@
 package bo.com.kibo.dal.intf;
 
 import bo.com.kibo.entidades.Troza;
+import java.util.List;
 
 /**
  *
@@ -15,4 +16,11 @@ import bo.com.kibo.entidades.Troza;
 public interface ITrozaDAO extends IDAOGenerico<Troza, Integer>{
     
     Integer getIdPorCodigoArea(String codigo, Integer idArea);
+
+    boolean checkNumero(Integer numero);
+
+    public List<Troza> getTrozasParaCorta(Integer idArea);
+
+    String getCodigo(Integer numero);
+    
 }

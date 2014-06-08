@@ -25,10 +25,24 @@ public class UsuarioHibernateDAO extends DAOGenericoHibernate<Usuario, Integer> 
 
     @Override
     public Usuario logear(String usuario, String pass) {
-        Query query = getSession().createQuery("FROM Usuario u WHERE u.nombre = :nombre AND u.contrasena = :contrasena "   );
+        Query query = getSession().createQuery("FROM Usuario u WHERE u.nombre = :nombre AND u.contrasena = :contrasena ");
         query.setParameter("nombre", usuario);
         query.setParameter("contrasena", pass);
         return (Usuario)query.uniqueResult();
+    }
+
+    @Override
+    public Integer getIdPorNombre(String nombre) {
+        Query query = getSession().createQuery("SELECT id from Usuario u WHERE u.nombre = :nombre");
+        query.setParameter("nombre", nombre);
+        return (Integer) query.uniqueResult();
+    }
+
+    @Override
+    public boolean checkId(Integer id) {
+        Query query = getSession().createQuery("SELECT 1 from Usuario u WHERE u.id = :id");
+        query.setParameter("id", id);
+        return (query.uniqueResult() != null);
     }
     
 }

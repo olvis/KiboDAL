@@ -6,7 +6,7 @@
             <column name="usr_id"/>
             <generator class="identity"/>
         </id>
-        <many-to-one class="bo.com.kibo.entidades.Rol" fetch="select" name="rol">
+        <many-to-one class="bo.com.kibo.entidades.Rol" fetch="join" name="rol" lazy="false">
             <column name="usr_rol" not-null="true"/>
         </many-to-one>
         <property name="nombre" type="string">
