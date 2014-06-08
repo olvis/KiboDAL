@@ -7,10 +7,14 @@ package bo.com.kibo.dal.impl;
 
 import bo.com.kibo.dal.impl.control.HibernateUtil;
 import bo.com.kibo.dal.intf.IDAOGenerico;
+import bo.com.kibo.entidades.intf.ISincronizable;
 import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import org.hibernate.Criteria;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.Example;
@@ -106,6 +110,15 @@ public abstract class DAOGenericoHibernate<T, ID extends Serializable> implement
             crit.add(c);
         }
         return crit.list();
+    }
+    
+    @Override
+    public List<T> obtenerNuevosObjetos(Date ultimaFecha){
+        if (ISincronizable.class.isAssignableFrom(getPersistentClass())){
+            Query query = getSession().createQuery("from " + getPersistentClass().getName() + " c where c.modificado > :fecha");
+            return query.list();
+        }
+        return new ArrayList<>();
     }
 
 }

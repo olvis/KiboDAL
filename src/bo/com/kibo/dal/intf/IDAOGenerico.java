@@ -7,6 +7,7 @@
 package bo.com.kibo.dal.intf;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -21,6 +22,7 @@ public interface IDAOGenerico<T, ID extends Serializable> {
     List<T> obtenerTodos();
     List<T> buscarPorEjemplo(T exampleInstance, String... excludeProperty);
     T persistir(T entity);
+    List<T> obtenerNuevosObjetos(Date fecha);
     void ejecutarOperacionesSesion();
     void limpiarSesion();
 }
