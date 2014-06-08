@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jun 03, 2014 at 01:33 AM
+-- Generation Time: Jun 09, 2014 at 12:27 AM
 -- Server version: 5.5.16
 -- PHP Version: 5.3.8
 
@@ -51,6 +51,8 @@ INSERT INTO `permiso` (`perm_id`, `perm_descripcion`, `perm_padre`) VALUES
 (109, 'Extraer trozas', 1),
 (110, 'Movilizar y despachar', 1),
 (111, 'Gestionar destinos', 1),
+(200, 'Gestionar usuarios', 1),
+(201, 'Gestionar roles', 1),
 (10101, 'Crear', 101),
 (10102, 'Modificar', 101),
 (10104, 'Visualizar', 101),
@@ -79,7 +81,13 @@ INSERT INTO `permiso` (`perm_id`, `perm_descripcion`, `perm_padre`) VALUES
 (11002, 'Visualizar', 110),
 (11101, 'Crear', 111),
 (11102, 'Modificar', 111),
-(11104, 'Visualizar', 111);
+(11104, 'Visualizar', 111),
+(20001, 'Crear', 200),
+(20002, 'Modificar', 200),
+(20003, 'Visualizar', 200),
+(20101, 'Crear', 201),
+(20102, 'Modificar', 201),
+(20103, 'Visualizar', 201);
 
 -- --------------------------------------------------------
 
@@ -146,6 +154,10 @@ INSERT INTO `rol_permiso` (`perm_id`, `rol_id`, `valor`) VALUES
 (110, 2, '0'),
 (111, 1, '1'),
 (111, 2, '0'),
+(200, 1, '1'),
+(200, 2, '0'),
+(201, 1, '1'),
+(201, 2, '0'),
 (10101, 1, '1'),
 (10101, 2, '0'),
 (10102, 1, '1'),
@@ -203,7 +215,19 @@ INSERT INTO `rol_permiso` (`perm_id`, `rol_id`, `valor`) VALUES
 (11102, 1, '1'),
 (11102, 2, '0'),
 (11104, 1, '1'),
-(11104, 2, '0');
+(11104, 2, '0'),
+(20001, 1, '1'),
+(20001, 2, '0'),
+(20002, 1, '1'),
+(20002, 2, '0'),
+(20003, 1, '1'),
+(20003, 2, '0'),
+(20101, 1, '1'),
+(20101, 2, '0'),
+(20102, 1, '1'),
+(20102, 2, '0'),
+(20103, 1, '1'),
+(20103, 2, '0');
 
 -- --------------------------------------------------------
 
@@ -228,7 +252,9 @@ CREATE TABLE IF NOT EXISTS `t01_area` (
 
 INSERT INTO `t01_area` (`area_id`, `area_codigo`, `area_anio_inicial`, `area_anio_final`, `area_zona_utm`, `area_banda_utm`) VALUES
 (1, 'PCA1', 2015, NULL, 5, 'G'),
-(2, 'PCA2', 2014, 2015, 9, 'J');
+(2, 'PCA2', 2014, 2015, 9, 'J'),
+(5, 'PCA3', 2014, 2016, 3, 'G'),
+(6, 'PCA4', 2014, 2016, 3, 'G');
 
 -- --------------------------------------------------------
 
@@ -243,7 +269,15 @@ CREATE TABLE IF NOT EXISTS `t02_calidad` (
   `modificado` datetime DEFAULT NULL,
   PRIMARY KEY (`calidad_id`),
   UNIQUE KEY `UQ_t02_calidad_calidad_codigo` (`calidad_codigo`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+
+--
+-- Dumping data for table `t02_calidad`
+--
+
+INSERT INTO `t02_calidad` (`calidad_id`, `calidad_codigo`, `calidad_descripcion`, `modificado`) VALUES
+(1, '1', 'Altisima', NULL),
+(8, '3', 'Baja', '2014-06-08 17:25:12');
 
 -- --------------------------------------------------------
 
@@ -260,7 +294,15 @@ CREATE TABLE IF NOT EXISTS `t03_especie` (
   `modificado` datetime DEFAULT NULL,
   PRIMARY KEY (`especie_id`),
   UNIQUE KEY `UQ_t03_especie_especie_nombre` (`especie_nombre`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `t03_especie`
+--
+
+INSERT INTO `t03_especie` (`especie_id`, `especie_nombre`, `especie_cientifico`, `especie_factor`, `especie_dmc`, `modificado`) VALUES
+(1, 'Robl2', 'Roblecito', 0.65, 20, NULL),
+(2, 'Sirari', 'Siraririto', 0.65, 30, NULL);
 
 -- --------------------------------------------------------
 
@@ -277,6 +319,15 @@ CREATE TABLE IF NOT EXISTS `t04_faja` (
   KEY `area_id` (`area_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `t04_faja`
+--
+
+INSERT INTO `t04_faja` (`faja_id`, `faja_numero`, `faja_bloque`, `area_id`) VALUES
+(3, 1, '1', 1),
+(4, 2, '1', 1),
+(7, 3, '1', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -287,9 +338,19 @@ CREATE TABLE IF NOT EXISTS `t06_carga` (
   `carga_id` int(11) NOT NULL AUTO_INCREMENT,
   `carga_codigo` varchar(2) NOT NULL,
   `modificado` datetime DEFAULT NULL,
+  `carga_rama` bit(1) NOT NULL,
   PRIMARY KEY (`carga_id`),
   UNIQUE KEY `UQ_t06_carga_carga_codigo` (`carga_codigo`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data for table `t06_carga`
+--
+
+INSERT INTO `t06_carga` (`carga_id`, `carga_codigo`, `modificado`, `carga_rama`) VALUES
+(1, 'A', NULL, '0'),
+(2, 'B', NULL, '0'),
+(3, 'C', NULL, '0');
 
 -- --------------------------------------------------------
 
@@ -302,7 +363,7 @@ CREATE TABLE IF NOT EXISTS `t09_geo_lugar` (
   `modificado` datetime DEFAULT NULL,
   `tipo` tinyint(4) NOT NULL,
   PRIMARY KEY (`lugar_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
 
 --
 -- Dumping data for table `t09_geo_lugar`
@@ -310,7 +371,12 @@ CREATE TABLE IF NOT EXISTS `t09_geo_lugar` (
 
 INSERT INTO `t09_geo_lugar` (`lugar_id`, `modificado`, `tipo`) VALUES
 (1, NULL, 0),
-(2, NULL, 0);
+(2, NULL, 0),
+(3, NULL, 1),
+(4, NULL, 1),
+(5, NULL, 0),
+(6, NULL, 0),
+(7, NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -332,7 +398,11 @@ CREATE TABLE IF NOT EXISTS `t09_geo_lugar_polig` (
 
 INSERT INTO `t09_geo_lugar_polig` (`lugar_id`, `x`, `y`, `posicion`) VALUES
 (2, 23, 23, 0),
-(2, 23, 23, 1);
+(2, 23, 23, 1),
+(3, 45, 45, 0),
+(3, 12, 12, 1),
+(4, 45, 12, 0),
+(7, 45, 12, 0);
 
 -- --------------------------------------------------------
 
@@ -372,7 +442,16 @@ CREATE TABLE IF NOT EXISTS `t100_form_cab` (
   `form_tipo` tinyint(4) NOT NULL,
   `form_fecha` date DEFAULT NULL,
   PRIMARY KEY (`form_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+
+--
+-- Dumping data for table `t100_form_cab`
+--
+
+INSERT INTO `t100_form_cab` (`form_id`, `form_tipo`, `form_fecha`) VALUES
+(1, 0, '2014-06-06'),
+(2, 0, '2014-06-06'),
+(4, 0, '2014-06-04');
 
 -- --------------------------------------------------------
 
@@ -384,9 +463,18 @@ CREATE TABLE IF NOT EXISTS `t101_cen_cab` (
   `cen_cab_id` int(11) NOT NULL,
   `cen_area` int(11) DEFAULT NULL,
   `cen_horas` tinyint(4) DEFAULT NULL,
+  `cen_faja` int(11) DEFAULT NULL,
   PRIMARY KEY (`cen_cab_id`),
   KEY `cen_area` (`cen_area`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `t101_cen_cab`
+--
+
+INSERT INTO `t101_cen_cab` (`cen_cab_id`, `cen_area`, `cen_horas`, `cen_faja`) VALUES
+(1, 1, NULL, 3),
+(2, 1, NULL, 3);
 
 -- --------------------------------------------------------
 
@@ -412,7 +500,19 @@ CREATE TABLE IF NOT EXISTS `t101_cen_det` (
   KEY `cen_calidad` (`cen_calidad`),
   KEY `cen_sp` (`cen_esp`),
   KEY `cen_cab_id` (`cen_cab_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+
+--
+-- Dumping data for table `t101_cen_det`
+--
+
+INSERT INTO `t101_cen_det` (`cen_det_id`, `cen_cod`, `cen_esp`, `cen_altura`, `cen_dap`, `cen_calidad`, `cen_condicion`, `cen_punto`, `cen_x`, `cen_y`, `cen_obs`, `cen_cab_id`, `cen_pos`) VALUES
+(1, '100', 1, 100, 100, 1, 'sem', NULL, NULL, NULL, '', 1, 0),
+(2, '101', 2, 101, 101, 1, 'apr', NULL, NULL, NULL, '', 1, 1),
+(3, '102', 2, 102, 102, 1, 'apr', 102, 102, 102, 'Obs', 1, 2),
+(4, '100', 1, 12, 12, 1, 'sem', NULL, NULL, NULL, '', 2, 0),
+(5, '101', 2, 45, 12, 1, 'apr', NULL, NULL, NULL, '', 2, 1),
+(6, '102', 2, 4, 12, 1, 'apr', 1, 10.2, 10.2, 'Obs', 2, 2);
 
 -- --------------------------------------------------------
 
@@ -427,6 +527,13 @@ CREATE TABLE IF NOT EXISTS `t102_cor_cab` (
   PRIMARY KEY (`cor_cab_id`),
   KEY `cor_area` (`cor_area`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `t102_cor_cab`
+--
+
+INSERT INTO `t102_cor_cab` (`cor_cab_id`, `cor_area`, `cor_horas`) VALUES
+(4, 1, 8);
 
 -- --------------------------------------------------------
 
@@ -452,7 +559,16 @@ CREATE TABLE IF NOT EXISTS `t102_cor_det` (
   KEY `cor_especie` (`cor_sp`),
   KEY `cor_cab_id` (`cor_cab_id`),
   KEY `cor_num` (`cor_num`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data for table `t102_cor_det`
+--
+
+INSERT INTO `t102_cor_det` (`cor_det_id`, `cor_num`, `cor_crg`, `cor_sp`, `cor_dma`, `cor_dme`, `cor_larg`, `cor_cal`, `cor_obs`, `cor_cab_id`, `cor_pos`) VALUES
+(1, 1, NULL, NULL, 45, 45, 45, 1, '', 4, 0),
+(2, 2, 1, NULL, 45, 45, 45, 1, '', 4, 1),
+(3, 2, 2, NULL, 45, 45, 45, 1, '', 4, 2);
 
 -- --------------------------------------------------------
 
@@ -564,12 +680,24 @@ CREATE TABLE IF NOT EXISTS `troza` (
   `cen_cab_id` int(11) DEFAULT NULL,
   `cor_cab_id` int(11) DEFAULT NULL,
   `ext_cab_id` int(11) DEFAULT NULL,
+  `troza_faja` int(11) DEFAULT NULL,
+  `modificado` date DEFAULT NULL,
   PRIMARY KEY (`troza_num`),
   KEY `troza_area` (`troza_area`),
   KEY `troza_cal` (`troza_cal`),
   KEY `troza_sp` (`troza_esp`),
   KEY `troza_padre` (`troza_padre`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+
+--
+-- Dumping data for table `troza`
+--
+
+INSERT INTO `troza` (`troza_num`, `troza_area`, `troza_cod`, `troza_esp`, `troza_cal`, `troza_dma`, `troza_dme`, `troza_largo`, `troza_estado`, `troza_existe`, `troza_padre`, `troza_x`, `troza_y`, `cen_cab_id`, `cor_cab_id`, `ext_cab_id`, `troza_faja`, `modificado`) VALUES
+(1, 1, '101', 2, 1, 45, 45, 45, 1, 0, NULL, NULL, NULL, 2, 4, NULL, NULL, NULL),
+(2, 1, '102', 2, 1, NULL, NULL, NULL, 0, 1, NULL, 10.2, 10.2, 2, NULL, NULL, NULL, NULL),
+(3, 1, '102.A', 2, 1, NULL, NULL, NULL, 0, 0, 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(4, 1, '102.B', 2, 1, NULL, NULL, NULL, 0, 0, 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -580,21 +708,22 @@ CREATE TABLE IF NOT EXISTS `troza` (
 CREATE TABLE IF NOT EXISTS `usuario` (
   `usr_id` int(11) NOT NULL AUTO_INCREMENT,
   `usr_nombre` varchar(30) NOT NULL,
-  `usr_contrasena` varchar(50) NOT NULL,
+  `usr_contrasena` varchar(255) NOT NULL,
   `usr_rol` int(11) NOT NULL,
   `usr_email` varchar(50) NOT NULL,
   PRIMARY KEY (`usr_id`),
   UNIQUE KEY `UQ_usuario_usr_email` (`usr_email`),
   UNIQUE KEY `UQ_usuario_usr_nombre` (`usr_nombre`),
   KEY `usr_rol` (`usr_rol`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Dumping data for table `usuario`
 --
 
 INSERT INTO `usuario` (`usr_id`, `usr_nombre`, `usr_contrasena`, `usr_rol`, `usr_email`) VALUES
-(2, 'admin', 'admin', 1, 'ocamachou@gmail.com');
+(2, 'admin', '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918', 1, 'ocamachou@gmail.com'),
+(4, 'isabel', 'e406067eb17954794f9c41c5d417fd81fa3d6016c5551bbe04e220560f0bf15f', 2, 'isabel@kibo.com.bo');
 
 --
 -- Constraints for dumped tables
