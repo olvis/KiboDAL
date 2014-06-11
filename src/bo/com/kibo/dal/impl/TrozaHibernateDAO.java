@@ -33,7 +33,7 @@ public class TrozaHibernateDAO extends DAOGenericoHibernate<Troza, Integer> impl
 
     @Override
     public List<Troza> getTrozasParaCorta(Integer idArea) {
-        Query query = getSession().createQuery("from Troza t Where t.area.id = :idArea");
+        Query query = getSession().createQuery("from Troza t Where t.area.id = :idArea and t.existe = 0 and t.estado = 0");
         query.setParameter("idArea", idArea);
         return query.list();
     }
