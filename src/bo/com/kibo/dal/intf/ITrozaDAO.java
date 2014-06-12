@@ -19,8 +19,10 @@ public interface ITrozaDAO extends IDAOGenerico<Troza, Integer>{
 
     boolean checkNumero(Integer numero);
 
-    public List<Troza> getTrozasParaCorta(Integer idArea);
+    List<Troza> getTrozasParaTala(Integer idArea);
 
     String getCodigo(Integer numero);
+    
+    List<String> getCodigosTrozaParaTala(Integer idArea, String codigoParcial);
     
 }

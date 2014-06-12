@@ -46,6 +46,9 @@
               <property name="observaciones" type="string">
                   <column name="cen_obs" />
               </property>
+             <many-to-one name="troza" class="bo.com.kibo.entidades.Troza" fetch="select">
+                  <column name="troza_num" />
+              </many-to-one>
           </composite-element>
       </list>
   </joined-subclass>

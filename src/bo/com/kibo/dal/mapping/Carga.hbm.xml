@@ -9,7 +9,7 @@
         <property name="codigo" type="string">
             <column name="carga_codigo" length="2" not-null="true" unique="true" />
         </property>
-        <property name="modificado" type="timestamp" insert="false" update="false">
+        <property name="modificado" type="timestamp">
             <column name="modificado" length="19" />
         </property>
         <property name="esRama" type="boolean">

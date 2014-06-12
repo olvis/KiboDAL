@@ -32,17 +32,28 @@ public class TrozaHibernateDAO extends DAOGenericoHibernate<Troza, Integer> impl
     }
 
     @Override
-    public List<Troza> getTrozasParaCorta(Integer idArea) {
-        Query query = getSession().createQuery("from Troza t Where t.area.id = :idArea and t.existe = 0 and t.estado = 0");
+    public String getCodigo(Integer numero) {
+        Query query = getSession().createQuery("Select codigo From Troza t Where t.numero = :numero");
+        query.setParameter("numero", numero);
+        return (String) query.uniqueResult();
+    }
+
+    @Override
+    public List<Troza> getTrozasParaTala(Integer idArea) {
+        Query query = getSession().createQuery("from Troza t Where t.area.id = :idArea "
+                + "and t.existe = 0 and t.estado = 0");
         query.setParameter("idArea", idArea);
         return query.list();
     }
 
     @Override
-    public String getCodigo(Integer numero) {
-        Query query = getSession().createQuery("Select codigo From Troza t Where t.numero = :numero");
-        query.setParameter("numero", numero);
-        return (String) query.uniqueResult();
+    public List<String> getCodigosTrozaParaTala(Integer idArea, String codigoParcial) {
+        Query query = getSession().createQuery("Select codigo from Troza t "
+                + "Where t.area.id = :idArea and t.existe = 0 and t.estado = 0"
+                + " and t.codigo LIKE :codigoParcial");
+        query.setParameter("idArea", idArea);
+        query.setParameter("codigoParcial", codigoParcial + "%");
+        return query.list();
     }
 
 }

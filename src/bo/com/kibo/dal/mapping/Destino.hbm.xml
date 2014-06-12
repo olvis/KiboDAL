@@ -9,7 +9,7 @@
         <property name="nombre" type="string">
             <column name="dest_nombre" length="50" not-null="true" unique="true" />
         </property>
-        <property name="modificado" type="timestamp" update="false" insert="false">
+        <property name="modificado" type="timestamp">
             <column name="modificado" length="19" />
         </property>
     </class>

@@ -20,6 +20,7 @@ public class SincronizablesInterceptor extends EmptyInterceptor{
 
     @Override
     public boolean onSave(Object entity, Serializable id, Object[] state, String[] propertyNames, Type[] types) {
+        
         if (entity instanceof ISincronizable){
             for ( int i=0; i<propertyNames.length; i++ ) {
                 if ( "modificado".equals( propertyNames[i] ) ) {

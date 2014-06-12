@@ -6,7 +6,7 @@
           <column name="lugar_id" />
           <generator class="identity" />
       </id>
-      <property name="modificado" type="timestamp" insert="false" update="false">
+      <property name="modificado" type="timestamp">
           <column name="modificado" length="19" />
       </property>
       <property name="tipo" type="byte" update="false">

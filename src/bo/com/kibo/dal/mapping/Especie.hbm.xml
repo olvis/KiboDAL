@@ -18,7 +18,7 @@
         <property name="dmc" type="java.lang.Float">
             <column name="especie_dmc" precision="12" scale="0" />
         </property>
-        <property name="modificado" type="timestamp" update="false" insert="false">
+        <property name="modificado" type="timestamp">
             <column name="modificado" length="19" />
         </property>
     </class>
