@@ -37,11 +37,11 @@
               <property name="punto" type="java.lang.Integer">
                   <column name="cen_punto" />
               </property>
-              <property name="x" type="java.lang.Float">
-                  <column name="cen_x" precision="12" scale="0" />
+              <property name="x" type="java.lang.Double">
+                  <column name="cen_x"  />
               </property>
-              <property name="y" type="java.lang.Float">
-                  <column name="cen_y" precision="12" scale="0" />
+              <property name="y" type="java.lang.Double">
+                  <column name="cen_y"  />
               </property>
               <property name="observaciones" type="string">
                   <column name="cen_obs" />

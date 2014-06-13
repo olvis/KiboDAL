@@ -36,11 +36,11 @@
         <property name="existe" type="java.lang.Byte">
             <column name="troza_existe" />
         </property>
-        <property name="x" type="java.lang.Float">
-            <column name="troza_x" precision="12" scale="0" />
+        <property name="x" type="java.lang.Double">
+            <column name="troza_x"/>
         </property>
-        <property name="y" type="java.lang.Float">
-            <column name="troza_y" precision="12" scale="0" />
+        <property name="y" type="java.lang.Double">
+            <column name="troza_y" />
         </property>
         <many-to-one name="formularioCenso" class="bo.com.kibo.entidades.FormularioCenso" fetch="select">
             <column name="cen_cab_id" />
