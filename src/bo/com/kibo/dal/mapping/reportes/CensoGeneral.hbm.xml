@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class mutable="false" table="v01_censo_gral" name="bo.com.kibo.entidades.reportes.CensoGeneral">
+        <id name="numero" type="java.lang.Integer">
+            <column name="troza_num"/>
+        </id>
+        <property name="fecha" type="date">
+            <column name="form_fecha" length="10" />
+        </property>
+        <property name="area" type="string">
+            <column name="area_codigo" />
+        </property>
+        <property name="codigo" type="string">
+            <column name="troza_cod" />
+        </property>
+        <property name="faja" type="java.lang.Integer">
+            <column name="faja_numero" />
+        </property>
+        <property name="bloque" type="string">
+            <column name="faja_bloque" />
+        </property>
+        <property name="especie" type="string">
+            <column name="especie_nombre" />
+        </property>
+        <property name="calidad" type="string">
+            <column name="calidad_codigo" />
+        </property>
+        <property name="dap" type="java.lang.Double">
+            <column name="cen_dap"  />
+        </property>
+        <property name="altura" type="java.lang.Double">
+            <column name="cen_altura"  />
+        </property>
+        <property name="volumen" type="java.lang.Double">
+            <column name="volumen_censo"  />
+        </property>
+        <property name="estado" type="java.lang.Byte">
+            <column name="troza_estado" />
+        </property>
+        <property name="existe" type="java.lang.Byte">
+            <column name="troza_existe" />
+        </property>
+    </class>
+</hibernate-mapping>

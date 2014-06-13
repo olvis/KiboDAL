@@ -18,6 +18,7 @@ import bo.com.kibo.dal.impl.FormularioCortaHibernateDAO;
 import bo.com.kibo.dal.impl.FormularioExtraccionHibernateDAO;
 import bo.com.kibo.dal.impl.FormularioMovimientoHibernateDAO;
 import bo.com.kibo.dal.impl.PatioHibernateDAO;
+import bo.com.kibo.dal.impl.ReporteHibernateDAO;
 import bo.com.kibo.dal.impl.RolHibernateDAO;
 import bo.com.kibo.dal.impl.RolPermisoHibernateDAO;
 import bo.com.kibo.dal.impl.TrozaHibernateDAO;
@@ -34,10 +35,12 @@ import bo.com.kibo.dal.intf.IFormularioCortaDAO;
 import bo.com.kibo.dal.intf.IFormularioExtraccionDAO;
 import bo.com.kibo.dal.intf.IFormularioMovimientoDAO;
 import bo.com.kibo.dal.intf.IPatioDAO;
+import bo.com.kibo.dal.intf.IReporteDAO;
 import bo.com.kibo.dal.intf.IRolDAO;
 import bo.com.kibo.dal.intf.IRolPermisoDAO;
 import bo.com.kibo.dal.intf.ITrozaDAO;
 import bo.com.kibo.dal.intf.IUsuarioDAO;
+import com.sun.org.apache.bcel.internal.generic.IREM;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.hibernate.HibernateException;
@@ -220,6 +223,17 @@ public class DAOManagerHibernate implements IDAOManager {
         }
         return trozaDAO;
     }
+    
+    private IReporteDAO reporteDAO;
+    
+    @Override
+    public IReporteDAO getReporteDOA() {
+       if (reporteDAO == null){
+           reporteDAO = new ReporteHibernateDAO();
+           asignarSesionActual((DAOGenericoHibernate)reporteDAO);
+       }
+       return reporteDAO;
+    }
 
     private void asignarSesionActual(DAOGenericoHibernate dao) {
         if (dao != null) {
@@ -243,7 +257,8 @@ public class DAOManagerHibernate implements IDAOManager {
         asignarSesionActual((DAOGenericoHibernate) usuarioDAO);
         asignarSesionActual((DAOGenericoHibernate) rolDAO);
         asignarSesionActual((DAOGenericoHibernate) trozaDAO);
-
+        asignarSesionActual((DAOGenericoHibernate) reporteDAO);
+        
     }
 
     Session sesion;
@@ -286,5 +301,7 @@ public class DAOManagerHibernate implements IDAOManager {
         }
 
     }
+
+    
 
 }

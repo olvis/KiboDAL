@@ -33,5 +33,7 @@
     <mapping resource="bo/com/kibo/dal/mapping/Permiso.hbm.xml"/>
     <mapping resource="bo/com/kibo/dal/mapping/RolPermiso.hbm.xml"/>
     <mapping resource="bo/com/kibo/dal/mapping/Destino.hbm.xml"/>
+    <mapping resource="bo/com/kibo/dal/mapping/reportes/CensoGeneral.hbm.xml"/>
+    <mapping resource="bo/com/kibo/dal/mapping/reportes/TrozaGeneral.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

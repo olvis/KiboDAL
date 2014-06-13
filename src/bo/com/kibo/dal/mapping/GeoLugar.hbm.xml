@@ -17,10 +17,10 @@
           <key column="lugar_id" />
           <list-index column="posicion" />
           <composite-element class="bo.com.kibo.entidades.PuntoXY">
-              <property name="x" type="java.lang.Float">
+              <property name="x" type="java.lang.Double">
                   <column name="x" not-null="true"/>
               </property>
-              <property name="y" type="java.lang.Float">
+              <property name="y" type="java.lang.Double">
                   <column name="y" not-null="true"/>
               </property>
           </composite-element>

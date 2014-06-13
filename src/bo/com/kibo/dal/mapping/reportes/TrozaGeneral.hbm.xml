@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class  mutable="false" table="v00_trozas_gral" name="bo.com.kibo.entidades.reportes.TrozaGeneral" >
+        <id name="numero" type="java.lang.Integer">
+            <column name="troza_num"/>
+        </id>
+        <property name="fechaTala" type="date">
+            <column name="fecha_tala" length="10" />
+        </property>
+        <property name="fechaArrastre" type="date">
+            <column name="fecha_arrastre" length="10" />
+        </property>
+        <property name="area" type="string">
+            <column name="area_codigo" />
+        </property>
+        <property name="codigo" type="string">
+            <column name="troza_cod" />
+        </property>
+        <property name="faja" type="java.lang.Integer">
+            <column name="faja_numero" />
+        </property>
+        <property name="bloque" type="string">
+            <column name="faja_bloque" />
+        </property>
+        <property name="especie" type="string">
+            <column name="especie_nombre" />
+        </property>
+        <property name="calidad" type="string">
+            <column name="calidad_codigo" />
+        </property>
+        <property name="dmayor" type="java.lang.Double">
+            <column name="troza_dma"  />
+        </property>
+        <property name="dmenor" type="java.lang.Double">
+            <column name="troza_dme"  />
+        </property>
+        <property name="largo" type="java.lang.Double">
+            <column name="troza_largo"  />
+        </property>
+        <property name="volumen" type="java.lang.Double">
+            <column name="m3r"  />
+        </property>
+        <property name="estado" type="java.lang.Byte">
+            <column name="troza_estado" />
+        </property>
+        <property name="existe" type="java.lang.Byte">
+            <column name="troza_existe" />
+        </property>
+    </class>
+</hibernate-mapping>
