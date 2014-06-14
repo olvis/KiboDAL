@@ -6,14 +6,14 @@
         <many-to-one class="bo.com.kibo.entidades.Area" fetch="select" name="area">
             <column name="mov_area"/>
         </many-to-one>
-        <many-to-one class="bo.com.kibo.entidades.Destino" fetch="select" name="destino">
-            <column name="mov_dest"/>
-        </many-to-one>
-        <property name="despacho" type="java.lang.Boolean">
-            <column name="mov_despacho"/>
+        <property name="destino" type="string">
+            <column name="mov_dest" length="50"/>
         </property>
         <property name="horas" type="java.lang.Byte">
             <column name="mov_horas"/>
+        </property>
+        <property name="guia" type="string">
+            <column name="mov_guia" length="50"/>
         </property>
         <list name="detalle" table="t104_mov_det">
             <key column="mov_cab_id" />
@@ -27,9 +27,6 @@
                 </many-to-one>
                 <many-to-one class="bo.com.kibo.entidades.Carga" fetch="select" name="carga">
                     <column name="mov_crg"/>
-                </many-to-one>
-                <many-to-one class="bo.com.kibo.entidades.Patio" fetch="select" name="patio">
-                    <column name="mov_pat"/>
                 </many-to-one>
                 <many-to-one class="bo.com.kibo.entidades.Especie" fetch="select" name="especie">
                     <column name="mov_esp"/>

@@ -8,7 +8,6 @@ package bo.com.kibo.dal.intf.control;
 import bo.com.kibo.dal.intf.IAreaDAO;
 import bo.com.kibo.dal.intf.ICalidadDAO;
 import bo.com.kibo.dal.intf.ICargaDAO;
-import bo.com.kibo.dal.intf.IDestinoDAO;
 import bo.com.kibo.dal.intf.IEspecieDAO;
 import bo.com.kibo.dal.intf.IFajaDAO;
 import bo.com.kibo.dal.intf.IFormularioCensoDAO;
@@ -21,8 +20,6 @@ import bo.com.kibo.dal.intf.IRolDAO;
 import bo.com.kibo.dal.intf.IRolPermisoDAO;
 import bo.com.kibo.dal.intf.ITrozaDAO;
 import bo.com.kibo.dal.intf.IUsuarioDAO;
-import bo.com.kibo.entidades.Troza;
-import java.util.List;
 
 /**
  *
@@ -49,8 +46,6 @@ public interface IDAOManager {
     IPatioDAO getPatioDAO();
 
     IFajaDAO getFajaDAO();
-
-    IDestinoDAO getDestinoDAO();
 
     IRolPermisoDAO getRolPermisoDAO();
 

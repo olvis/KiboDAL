@@ -10,7 +10,6 @@ import bo.com.kibo.dal.impl.AreaHibernateDAO;
 import bo.com.kibo.dal.impl.CalidadHibernateDAO;
 import bo.com.kibo.dal.impl.CargaHibernateDAO;
 import bo.com.kibo.dal.impl.DAOGenericoHibernate;
-import bo.com.kibo.dal.impl.DestinoHibernateDAO;
 import bo.com.kibo.dal.impl.EspecieHibernateDAO;
 import bo.com.kibo.dal.impl.FajaHibernateDAO;
 import bo.com.kibo.dal.impl.FormularioCensoHibernateDAO;
@@ -27,7 +26,6 @@ import bo.com.kibo.dal.intf.IAreaDAO;
 import bo.com.kibo.dal.intf.ICalidadDAO;
 import bo.com.kibo.dal.intf.ICargaDAO;
 import bo.com.kibo.dal.intf.control.IDAOManager;
-import bo.com.kibo.dal.intf.IDestinoDAO;
 import bo.com.kibo.dal.intf.IEspecieDAO;
 import bo.com.kibo.dal.intf.IFajaDAO;
 import bo.com.kibo.dal.intf.IFormularioCensoDAO;
@@ -40,7 +38,6 @@ import bo.com.kibo.dal.intf.IRolDAO;
 import bo.com.kibo.dal.intf.IRolPermisoDAO;
 import bo.com.kibo.dal.intf.ITrozaDAO;
 import bo.com.kibo.dal.intf.IUsuarioDAO;
-import com.sun.org.apache.bcel.internal.generic.IREM;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.hibernate.HibernateException;
@@ -169,17 +166,6 @@ public class DAOManagerHibernate implements IDAOManager {
         return fajaDAO;
     }
 
-    private IDestinoDAO destinoDAO;
-
-    @Override
-    public IDestinoDAO getDestinoDAO() {
-        if (destinoDAO == null) {
-            destinoDAO = new DestinoHibernateDAO();
-            asignarSesionActual((DAOGenericoHibernate) destinoDAO);
-        }
-        return destinoDAO;
-    }
-
     private IRolPermisoDAO rolPermisoDAO;
 
     @Override
@@ -252,7 +238,6 @@ public class DAOManagerHibernate implements IDAOManager {
         asignarSesionActual((DAOGenericoHibernate) cargaDAO);
         asignarSesionActual((DAOGenericoHibernate) patioDAO);
         asignarSesionActual((DAOGenericoHibernate) fajaDAO);
-        asignarSesionActual((DAOGenericoHibernate) destinoDAO);
         asignarSesionActual((DAOGenericoHibernate) rolPermisoDAO);
         asignarSesionActual((DAOGenericoHibernate) usuarioDAO);
         asignarSesionActual((DAOGenericoHibernate) rolDAO);
