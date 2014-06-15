@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package bo.com.kibo.dal.impl;
 
 import bo.com.kibo.dal.intf.IRolDAO;
@@ -14,7 +13,7 @@ import org.hibernate.Query;
  *
  * @author Olvinho
  */
-public class RolHibernateDAO extends DAOGenericoHibernate<Rol, Integer> implements IRolDAO{
+public class RolHibernateDAO extends DAOGenericoHibernate<Rol, Integer> implements IRolDAO {
 
     @Override
     public boolean checkId(Integer id) {
@@ -27,7 +26,7 @@ public class RolHibernateDAO extends DAOGenericoHibernate<Rol, Integer> implemen
     public Integer getIdPorDescripcion(String descripcion) {
         Query query = getSession().createQuery("SELECT id from Rol r WHERE r.descripcion = :descripcion");
         query.setParameter("descripcion", descripcion);
-        return (Integer)query.uniqueResult();
+        return (Integer) query.uniqueResult();
     }
-    
+
 }

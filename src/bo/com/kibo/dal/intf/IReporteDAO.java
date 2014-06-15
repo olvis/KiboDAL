@@ -13,16 +13,22 @@ import java.util.List;
  *
  * @author Olvinho
  */
-public interface IReporteDAO extends IDAOGenerico<CensoGeneral, Integer>{
+public interface IReporteDAO extends IDAOGenerico<CensoGeneral, Integer> {
 
     List<CensoGeneral> obtenerCensoGeneral();
-    
+
     List<CensoGeneral> obtenerSaldoCenso();
-    
+
     List<TrozaGeneral> obtenerTrozasGeneral();
-    
+
     List<TrozaGeneral> obtenerTalaGeneral();
-    
+
     List<TrozaGeneral> obtenerTalaSaldo();
-    
+
+    List<TrozaGeneral> obtenerExtraccionGeneral();
+
+    List<TrozaGeneral> obtenerExtraccionSaldo();
+
+    List<TrozaGeneral> obtenerDespachoGeneral();
+
 }

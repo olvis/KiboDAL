@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package bo.com.kibo.dal.impl.control;
 
 import bo.com.kibo.entidades.intf.ISincronizable;
@@ -16,14 +15,14 @@ import org.hibernate.type.Type;
  *
  * @author Olvinho
  */
-public class SincronizablesInterceptor extends EmptyInterceptor{
+public class SincronizablesInterceptor extends EmptyInterceptor {
 
     @Override
     public boolean onSave(Object entity, Serializable id, Object[] state, String[] propertyNames, Type[] types) {
-        
-        if (entity instanceof ISincronizable){
-            for ( int i=0; i<propertyNames.length; i++ ) {
-                if ( "modificado".equals( propertyNames[i] ) ) {
+
+        if (entity instanceof ISincronizable) {
+            for (int i = 0; i < propertyNames.length; i++) {
+                if ("modificado".equals(propertyNames[i])) {
                     state[i] = new Date();
                     return true;
                 }
@@ -34,9 +33,9 @@ public class SincronizablesInterceptor extends EmptyInterceptor{
 
     @Override
     public boolean onFlushDirty(Object entity, Serializable id, Object[] currentState, Object[] previousState, String[] propertyNames, Type[] types) {
-        if (entity instanceof ISincronizable){
-            for ( int i=0; i<propertyNames.length; i++ ) {
-                if ( "modificado".equals( propertyNames[i] ) ) {
+        if (entity instanceof ISincronizable) {
+            for (int i = 0; i < propertyNames.length; i++) {
+                if ("modificado".equals(propertyNames[i])) {
                     currentState[i] = new Date();
                     return true;
                 }
@@ -44,5 +43,5 @@ public class SincronizablesInterceptor extends EmptyInterceptor{
         }
         return false;
     }
-    
+
 }

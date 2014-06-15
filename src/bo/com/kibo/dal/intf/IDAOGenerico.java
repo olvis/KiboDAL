@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package bo.com.kibo.dal.intf;
 
 import java.io.Serializable;
@@ -17,12 +16,20 @@ import java.util.List;
  * @param <ID>
  */
 public interface IDAOGenerico<T, ID extends Serializable> {
+
     T obtenerPorId(ID id);
+
     T recuperarPorId(ID id);
+
     List<T> obtenerTodos();
+
     List<T> buscarPorEjemplo(T exampleInstance, String... excludeProperty);
+
     T persistir(T entity);
+
     List<T> obtenerNuevosObjetos(Date fecha);
+
     void ejecutarOperacionesSesion();
+
     void limpiarSesion();
 }

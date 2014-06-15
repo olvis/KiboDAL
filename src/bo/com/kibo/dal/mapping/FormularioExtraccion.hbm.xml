@@ -22,6 +22,9 @@
                 <many-to-one class="bo.com.kibo.entidades.Carga" fetch="select" name="carga">
                     <column name="ext_crg"/>
                 </many-to-one>
+                <property name="codigoCarga" type="string">
+                    <column name="ext_cod_crg" length="50"/>
+                </property>
                 <many-to-one class="bo.com.kibo.entidades.Patio" fetch="select" name="patio">
                     <column name="ext_pat"/>
                 </many-to-one>

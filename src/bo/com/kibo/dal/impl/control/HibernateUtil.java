@@ -20,9 +20,9 @@ import org.hibernate.service.ServiceRegistryBuilder;
  * @author Olvinho
  */
 public class HibernateUtil {
+
     private static final Logger LOG = Logger.getLogger(HibernateUtil.class.getName());
 
-    
     private static final SessionFactory sessionFactory;
     private static final ServiceRegistry serviceRegistry;
 
@@ -36,7 +36,7 @@ public class HibernateUtil {
             sessionFactory = configuration.buildSessionFactory(serviceRegistry);
         } catch (Throwable ex) {
             // Log the exception. 
-            LOG.log(Level.SEVERE,"Initial SessionFactory creation failed.", ex);
+            LOG.log(Level.SEVERE, "Initial SessionFactory creation failed.", ex);
             throw new ExceptionInInitializerError(ex);
         }
     }

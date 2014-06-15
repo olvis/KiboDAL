@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package bo.com.kibo.dal.impl;
 
 import bo.com.kibo.dal.intf.IFormularioMovimientoDAO;
@@ -13,6 +12,6 @@ import bo.com.kibo.entidades.FormularioMovimiento;
  *
  * @author Olvinho
  */
-public class FormularioMovimientoHibernateDAO extends DAOGenericoHibernate<FormularioMovimiento, Integer> implements IFormularioMovimientoDAO{
-    
+public class FormularioMovimientoHibernateDAO extends DAOGenericoHibernate<FormularioMovimiento, Integer> implements IFormularioMovimientoDAO {
+
 }

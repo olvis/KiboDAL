@@ -51,7 +51,7 @@ public class DAOManagerHibernate implements IDAOManager {
 
     private static final Logger LOG = Logger.getLogger(DAOManagerHibernate.class.getName());
     private SincronizablesInterceptor interceptor = new SincronizablesInterceptor();
-    
+
     public DAOManagerHibernate() {
 
     }
@@ -209,16 +209,16 @@ public class DAOManagerHibernate implements IDAOManager {
         }
         return trozaDAO;
     }
-    
+
     private IReporteDAO reporteDAO;
-    
+
     @Override
     public IReporteDAO getReporteDOA() {
-       if (reporteDAO == null){
-           reporteDAO = new ReporteHibernateDAO();
-           asignarSesionActual((DAOGenericoHibernate)reporteDAO);
-       }
-       return reporteDAO;
+        if (reporteDAO == null) {
+            reporteDAO = new ReporteHibernateDAO();
+            asignarSesionActual((DAOGenericoHibernate) reporteDAO);
+        }
+        return reporteDAO;
     }
 
     private void asignarSesionActual(DAOGenericoHibernate dao) {
@@ -234,7 +234,7 @@ public class DAOManagerHibernate implements IDAOManager {
         asignarSesionActual((DAOGenericoHibernate) formularioCensoDAO);
         asignarSesionActual((DAOGenericoHibernate) formularioCortaDAO);
         asignarSesionActual((DAOGenericoHibernate) formularioExtraccionDAO);
-        asignarSesionActual((DAOGenericoHibernate) formularioExtraccionDAO);
+        asignarSesionActual((DAOGenericoHibernate) formularioMovimientoDAO);
         asignarSesionActual((DAOGenericoHibernate) cargaDAO);
         asignarSesionActual((DAOGenericoHibernate) patioDAO);
         asignarSesionActual((DAOGenericoHibernate) fajaDAO);
@@ -243,7 +243,7 @@ public class DAOManagerHibernate implements IDAOManager {
         asignarSesionActual((DAOGenericoHibernate) rolDAO);
         asignarSesionActual((DAOGenericoHibernate) trozaDAO);
         asignarSesionActual((DAOGenericoHibernate) reporteDAO);
-        
+
     }
 
     Session sesion;
@@ -286,7 +286,5 @@ public class DAOManagerHibernate implements IDAOManager {
         }
 
     }
-
-    
 
 }

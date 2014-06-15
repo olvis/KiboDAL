@@ -3,8 +3,11 @@
 <hibernate-mapping>
     <joined-subclass name="bo.com.kibo.entidades.Patio" table="t10_patio" extends="bo.com.kibo.entidades.GeoLugar">
         <key column="pat_id"/>
-        <property name="descripcion" type="string">
-            <column name="pat_descripcion" length="50" not-null="true" unique="true" />
+        <property name="nombre" type="string">
+            <column name="pat_nombre" length="50" not-null="true" />
         </property>
+        <many-to-one name="area" class="bo.com.kibo.entidades.Area" fetch="select">
+            <column name="area_id" not-null="true" />
+        </many-to-one>
     </joined-subclass>
 </hibernate-mapping>

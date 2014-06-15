@@ -54,7 +54,7 @@ public interface IDAOManager {
     IRolDAO getRolDAO();
 
     ITrozaDAO getTrozaDAO();
-    
+
     IReporteDAO getReporteDOA();
 
     void iniciarTransaccion();

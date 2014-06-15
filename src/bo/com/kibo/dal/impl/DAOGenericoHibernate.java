@@ -50,7 +50,6 @@ public abstract class DAOGenericoHibernate<T, ID extends Serializable> implement
         return persistentClass;
     }
 
-    
     @Override
     public T obtenerPorId(ID id) {
         T entity;
@@ -65,15 +64,13 @@ public abstract class DAOGenericoHibernate<T, ID extends Serializable> implement
         return entity;
     }
 
-
     @Override
     public List<T> obtenerTodos() {
         return findByCriteria();
     }
 
-    
     @Override
-    public List<T> buscarPorEjemplo(T exampleInstance,String... excludeProperty) {
+    public List<T> buscarPorEjemplo(T exampleInstance, String... excludeProperty) {
         Criteria crit = getSession().createCriteria(getPersistentClass());
         Example example = Example.create(exampleInstance);
         for (String exclude : excludeProperty) {
@@ -85,7 +82,7 @@ public abstract class DAOGenericoHibernate<T, ID extends Serializable> implement
 
     @Override
     public T persistir(T entity) {
-        return (T)getSession().merge(entity);
+        return (T) getSession().merge(entity);
     }
 
     @Override
@@ -100,21 +97,22 @@ public abstract class DAOGenericoHibernate<T, ID extends Serializable> implement
 
     /**
      * Use this inside subclasses as a convenience method.
+     *
      * @param criterion
-     * @return 
+     * @return
      */
     protected List<T> findByCriteria(Criterion... criterion) {
-        Criteria crit =
-                getSession().createCriteria(getPersistentClass());
+        Criteria crit
+                = getSession().createCriteria(getPersistentClass());
         for (Criterion c : criterion) {
             crit.add(c);
         }
         return crit.list();
     }
-    
+
     @Override
-    public List<T> obtenerNuevosObjetos(Date ultimaFecha){
-        if (ISincronizable.class.isAssignableFrom(getPersistentClass())){
+    public List<T> obtenerNuevosObjetos(Date ultimaFecha) {
+        if (ISincronizable.class.isAssignableFrom(getPersistentClass())) {
             Query query = getSession().createQuery("from " + getPersistentClass().getName() + " c where c.modificado > :fecha");
             return query.list();
         }

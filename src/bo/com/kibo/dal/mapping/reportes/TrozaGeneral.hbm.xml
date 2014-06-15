@@ -47,5 +47,17 @@
         <property name="existe" type="java.lang.Byte">
             <column name="troza_existe" />
         </property>
+        <property name="patio" type="string">
+            <column name="pat_nombre" />
+        </property>
+        <property name="fechaDespacho" type="date">
+            <column name="form_fecha" length="10" />
+        </property>
+        <property name="destino" type="string">
+            <column name="mov_dest" />
+        </property>
+        <property name="guia" type="string">
+            <column name="mov_guia" />
+        </property>
     </class>
 </hibernate-mapping>

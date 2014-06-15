@@ -1,55 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-  <joined-subclass name="bo.com.kibo.entidades.FormularioCenso" table="t101_cen_cab" extends="bo.com.kibo.entidades.EncabezadoFormulario">
-      <key column="cen_cab_id"/>
-      <many-to-one name="area" class="bo.com.kibo.entidades.Area" fetch="select">
-          <column name="cen_area" />
-      </many-to-one>
-      <many-to-one name="faja" class="bo.com.kibo.entidades.Faja" fetch="select">
-          <column name="cen_faja" />
-      </many-to-one>
-      <property name="horas" type="java.lang.Byte">
-          <column name="cen_horas" />
-      </property>
-      <list name="detalle" table="t101_cen_det">
-          <key column="cen_cab_id" />
-          <list-index column="cen_pos" />
-          <composite-element class="bo.com.kibo.entidades.DetalleCenso">
-              <many-to-one name="calidad" class="bo.com.kibo.entidades.Calidad" fetch="select">
-                  <column name="cen_calidad" not-null="true" />
-              </many-to-one>
-              <many-to-one name="especie" class="bo.com.kibo.entidades.Especie" fetch="select">
-                  <column name="cen_esp" not-null="true" />
-              </many-to-one>
-              <property name="codigo" type="string">
-                  <column name="cen_cod" length="30" not-null="true" />
-              </property>
-              <property name="altura" type="java.lang.Float">
-                  <column name="cen_altura" precision="12" scale="0" />
-              </property>
-              <property name="dap" type="java.lang.Float">
-                  <column name="cen_dap" precision="12" scale="0" />
-              </property>
-              <property name="condicion" type="string">
-                  <column name="cen_condicion" length="5" not-null="true" />
-              </property>
-              <property name="punto" type="java.lang.Integer">
-                  <column name="cen_punto" />
-              </property>
-              <property name="x" type="java.lang.Double">
-                  <column name="cen_x"  />
-              </property>
-              <property name="y" type="java.lang.Double">
-                  <column name="cen_y"  />
-              </property>
-              <property name="observaciones" type="string">
-                  <column name="cen_obs" />
-              </property>
-             <many-to-one name="troza" class="bo.com.kibo.entidades.Troza" fetch="select">
-                  <column name="troza_num" />
-              </many-to-one>
-          </composite-element>
-      </list>
-  </joined-subclass>
+    <joined-subclass name="bo.com.kibo.entidades.FormularioCenso" table="t101_cen_cab" extends="bo.com.kibo.entidades.EncabezadoFormulario">
+        <key column="cen_cab_id"/>
+        <many-to-one name="area" class="bo.com.kibo.entidades.Area" fetch="select">
+            <column name="cen_area" />
+        </many-to-one>
+        <many-to-one name="faja" class="bo.com.kibo.entidades.Faja" fetch="select">
+            <column name="cen_faja" />
+        </many-to-one>
+        <property name="horas" type="java.lang.Byte">
+            <column name="cen_horas" />
+        </property>
+        <list name="detalle" table="t101_cen_det">
+            <key column="cen_cab_id" />
+            <list-index column="cen_pos" />
+            <composite-element class="bo.com.kibo.entidades.DetalleCenso">
+                <many-to-one name="calidad" class="bo.com.kibo.entidades.Calidad" fetch="select">
+                    <column name="cen_calidad" not-null="true" />
+                </many-to-one>
+                <many-to-one name="especie" class="bo.com.kibo.entidades.Especie" fetch="select">
+                    <column name="cen_esp" not-null="true" />
+                </many-to-one>
+                <property name="codigo" type="string">
+                    <column name="cen_cod" length="30" not-null="true" />
+                </property>
+                <property name="altura" type="java.lang.Float">
+                    <column name="cen_altura" precision="12" scale="0" />
+                </property>
+                <property name="dap" type="java.lang.Float">
+                    <column name="cen_dap" precision="12" scale="0" />
+                </property>
+                <property name="condicion" type="string">
+                    <column name="cen_condicion" length="5" not-null="true" />
+                </property>
+                <property name="punto" type="java.lang.Integer">
+                    <column name="cen_punto" />
+                </property>
+                <property name="x" type="java.lang.Double">
+                    <column name="cen_x"  />
+                </property>
+                <property name="y" type="java.lang.Double">
+                    <column name="cen_y"  />
+                </property>
+                <property name="observaciones" type="string">
+                    <column name="cen_obs" />
+                </property>
+                <many-to-one name="troza" class="bo.com.kibo.entidades.Troza" fetch="select">
+                    <column name="troza_num" />
+                </many-to-one>
+            </composite-element>
+        </list>
+    </joined-subclass>
 </hibernate-mapping>

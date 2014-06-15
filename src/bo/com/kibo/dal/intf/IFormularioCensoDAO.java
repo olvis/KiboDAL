@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package bo.com.kibo.dal.intf;
 
 import bo.com.kibo.entidades.FormularioCenso;
@@ -12,6 +11,6 @@ import bo.com.kibo.entidades.FormularioCenso;
  *
  * @author Olvinho
  */
-public interface IFormularioCensoDAO extends IDAOGenerico<FormularioCenso, Integer>{
-    
+public interface IFormularioCensoDAO extends IDAOGenerico<FormularioCenso, Integer> {
+
 }

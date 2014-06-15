@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package bo.com.kibo.dal.impl;
 
 import bo.com.kibo.dal.intf.IAreaDAO;
@@ -14,13 +13,13 @@ import org.hibernate.Query;
  *
  * @author Olvinho
  */
-public class AreaHibernateDAO extends GeoLugarHibernateDAO<Area> implements IAreaDAO{
+public class AreaHibernateDAO extends GeoLugarHibernateDAO<Area> implements IAreaDAO {
 
     @Override
     public Integer getIdPorCodigo(String codigo) {
         Query query = getSession().createQuery("SELECT id from Area a WHERE a.codigo = :codigo");
         query.setParameter("codigo", codigo);
-        return (Integer)query.uniqueResult();
+        return (Integer) query.uniqueResult();
     }
 
     @Override
@@ -34,16 +33,14 @@ public class AreaHibernateDAO extends GeoLugarHibernateDAO<Area> implements IAre
     public String getCodigo(Integer id) {
         Query query = getSession().createQuery("SELECT codigo from Area a WHERE a.id = :id");
         query.setParameter("id", id);
-        return (String)query.uniqueResult();
+        return (String) query.uniqueResult();
     }
 
     @Override
     public Area recuperarPorCodigo(String codigo) {
         Query query = getSession().createQuery("from Area a WHERE a.codigo = :codigo");
         query.setParameter("codigo", codigo);
-        return (Area)query.uniqueResult();
+        return (Area) query.uniqueResult();
     }
-    
-    
-    
+
 }

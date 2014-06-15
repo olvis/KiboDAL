@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package bo.com.kibo.dal.intf;
 
 import bo.com.kibo.entidades.RolPermiso;
@@ -13,6 +12,6 @@ import bo.com.kibo.entidades.RolPermisoId;
  *
  * @author Olvinho
  */
-public interface IRolPermisoDAO extends IDAOGenerico<RolPermiso, RolPermisoId>{
-    
+public interface IRolPermisoDAO extends IDAOGenerico<RolPermiso, RolPermisoId> {
+
 }

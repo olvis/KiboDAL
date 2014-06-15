@@ -19,6 +19,9 @@
                 <many-to-one class="bo.com.kibo.entidades.Carga" fetch="select" name="carga">
                     <column name="cor_crg"/>
                 </many-to-one>
+                <property name="codigoCarga" type="string">
+                    <column name="cor_cod_crg" length="50"/>
+                </property>
                 <many-to-one class="bo.com.kibo.entidades.Troza" fetch="select" name="troza">
                     <column name="cor_num" not-null="true"/>
                 </many-to-one>

@@ -39,16 +39,37 @@ public class ReporteHibernateDAO
 
     @Override
     public List<TrozaGeneral> obtenerTalaGeneral() {
-       Query query = getSession().createQuery("from TrozaGeneral t "
-               + "where t.fechaTala is not null");
-       return query.list();
+        Query query = getSession().createQuery("from TrozaGeneral t "
+                + "where t.fechaTala is not null");
+        return query.list();
     }
 
     @Override
     public List<TrozaGeneral> obtenerTalaSaldo() {
         Query query = getSession().createQuery("from TrozaGeneral t "
-               + "where t.estado = 1 and t.existe = 0");
-       return query.list();
+                + "where t.estado = 1 and t.existe = 0");
+        return query.list();
+    }
+
+    @Override
+    public List<TrozaGeneral> obtenerExtraccionGeneral() {
+        Query query = getSession().createQuery("from TrozaGeneral t "
+                + "where t.fechaArrastre is not null");
+        return query.list();
+    }
+
+    @Override
+    public List<TrozaGeneral> obtenerExtraccionSaldo() {
+        Query query = getSession().createQuery("from TrozaGeneral t "
+                + "where t.estado = 2 and t.existe = 0");
+        return query.list();
+    }
+
+    @Override
+    public List<TrozaGeneral> obtenerDespachoGeneral() {
+        Query query = getSession().createQuery("from TrozaGeneral t "
+                + "where t.fechaDespacho is not null");
+        return query.list();
     }
 
 }

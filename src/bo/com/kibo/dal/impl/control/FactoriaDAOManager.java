@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package bo.com.kibo.dal.impl.control;
 
 import bo.com.kibo.dal.intf.control.IDAOManager;
@@ -13,11 +12,12 @@ import bo.com.kibo.dal.intf.control.IDAOManager;
  * @author Olvinho
  */
 public class FactoriaDAOManager {
+
     private static final ThreadLocal<IDAOManager> caja = new ThreadLocal<>();
-    
-    public static IDAOManager getDAOManager(){
+
+    public static IDAOManager getDAOManager() {
         IDAOManager daoManager = caja.get();
-        if (daoManager == null){
+        if (daoManager == null) {
             daoManager = new DAOManagerHibernate();
             caja.set(daoManager);
         }

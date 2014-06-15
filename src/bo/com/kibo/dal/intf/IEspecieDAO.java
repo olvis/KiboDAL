@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package bo.com.kibo.dal.intf;
 
 import bo.com.kibo.entidades.Especie;
@@ -12,12 +11,12 @@ import bo.com.kibo.entidades.Especie;
  *
  * @author Olvinho
  */
-public interface IEspecieDAO extends IDAOGenerico<Especie, Integer>{
-    
+public interface IEspecieDAO extends IDAOGenerico<Especie, Integer> {
+
     public Integer getIdPorNombre(String nombre);
-    
+
     public boolean checkId(Integer id);
-    
+
     public String getNombre(Integer id);
-    
+
 }

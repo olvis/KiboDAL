@@ -3,14 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package bo.com.kibo.dal.exceptions;
 
 /**
  *
  * @author Olvinho
  */
-public class DAOException extends RuntimeException{
+public class DAOException extends RuntimeException {
 
     public DAOException(String message) {
         super(message);
@@ -26,5 +25,5 @@ public class DAOException extends RuntimeException{
     public DAOException(Throwable cause) {
         super(cause);
     }
-     
+
 }
