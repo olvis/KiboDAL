@@ -72,4 +72,24 @@ public class TrozaHibernateDAO extends DAOGenericoHibernate<Troza, Integer> impl
         return query.list();
     }
 
+    @Override
+    public List<String> getCodigosTrozaParaExtraccion(Integer idArea, String codigoParcial) {
+        Query query = getSession().createQuery("Select codigo from Troza t "
+                + "Where t.area.id = :idArea and t.existe = 0 and t.estado = 1"
+                + " and t.codigo LIKE :codigoParcial");
+        query.setParameter("idArea", idArea);
+        query.setParameter("codigoParcial", codigoParcial + "%");
+        return query.list();
+    }
+
+    @Override
+    public List<String> getCodigosTrozaParaMovimiento(Integer idArea, String codigoParcial) {
+        Query query = getSession().createQuery("Select codigo from Troza t "
+                + "Where t.area.id = :idArea and t.existe = 0 and t.estado = 2"
+                + " and t.codigo LIKE :codigoParcial");
+        query.setParameter("idArea", idArea);
+        query.setParameter("codigoParcial", codigoParcial + "%");
+        return query.list();
+    }
+
 }

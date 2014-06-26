@@ -27,5 +27,9 @@ public interface ITrozaDAO extends IDAOGenerico<Troza, Integer> {
     String getCodigo(Integer numero);
 
     List<String> getCodigosTrozaParaTala(Integer idArea, String codigoParcial);
+    
+    List<String> getCodigosTrozaParaExtraccion(Integer idArea, String codigoParcial);
+    
+    List<String> getCodigosTrozaParaMovimiento(Integer idArea, String codigoParcial);
 
 }
