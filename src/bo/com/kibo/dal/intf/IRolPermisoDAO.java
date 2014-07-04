@@ -7,11 +7,15 @@ package bo.com.kibo.dal.intf;
 
 import bo.com.kibo.entidades.RolPermiso;
 import bo.com.kibo.entidades.RolPermisoId;
+import java.util.List;
 
 /**
  *
  * @author Olvinho
  */
-public interface IRolPermisoDAO extends IDAOGenerico<RolPermiso, RolPermisoId> {
+public interface IRolPermisoDAO
+        extends IDAOGenerico<RolPermiso, RolPermisoId> {
 
+    List<RolPermiso> getPermisos(int idRol, Integer idPadre);
+    
 }

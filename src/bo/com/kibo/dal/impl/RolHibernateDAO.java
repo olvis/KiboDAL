@@ -29,4 +29,11 @@ public class RolHibernateDAO extends DAOGenericoHibernate<Rol, Integer> implemen
         return (Integer) query.uniqueResult();
     }
 
+    @Override
+    public String getDescripcion(Integer id) {
+        Query query = getSession().createQuery("SELECT descripcion from Rol r WHERE r.id = :id");
+        query.setParameter("id", id);
+        return (String) query.uniqueResult();
+    }
+
 }

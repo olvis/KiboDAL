@@ -9,5 +9,8 @@
         <property name="descripcion" type="string">
             <column name="perm_descripcion" length="100" not-null="true" />
         </property>
+        <many-to-one name="padre" class="bo.com.kibo.entidades.Permiso" fetch="select">
+            <column name="perm_padre" />
+        </many-to-one>
     </class>
 </hibernate-mapping>

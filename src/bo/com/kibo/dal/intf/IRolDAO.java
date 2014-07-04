@@ -17,4 +17,6 @@ public interface IRolDAO extends IDAOGenerico<Rol, Integer> {
 
     Integer getIdPorDescripcion(String descripcion);
 
+    String getDescripcion(Integer id);
+
 }
